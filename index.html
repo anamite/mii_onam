@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onam 2026 - Mallus in Ingolstadt</title>
+    <!-- Google Fonts: Cinzel for headings, Plus Jakarta Sans for UI elements -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: linear-gradient(135deg, #fbf8f0 0%, #fffdfc 50%, #f4edd4 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 15px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Falling Petals Animation */
+      .petal {
+        position: fixed;
+        top: -20px;
+        pointer-events: none;
+        z-index: 1;
+        animation: fall linear infinite;
+      }
+
+      .petal.marigold-yellow {
+        background: radial-gradient(circle, #ffe066 0%, #ffd700 100%);
+        box-shadow: 0 2px 5px rgba(255, 215, 0, 0.3);
+      }
+
+      .petal.marigold-orange {
+        background: radial-gradient(circle, #ffaa44 0%, #ff8800 100%);
+        box-shadow: 0 2px 5px rgba(255, 136, 0, 0.3);
+      }
+
+      .petal.jasmine {
+        background: #fffef0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.8;
+        }
+        90% {
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(105vh) rotate(720deg) translateX(100px);
+          opacity: 0;
+        }
+      }
+
+      /* Core Layout */
+      .container {
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(13, 92, 52, 0.08), 0 0 0 1px rgba(218, 165, 32, 0.15);
+        max-width: 520px;
+        width: 100%;
+        padding: 40px 30px;
+        position: relative;
+        z-index: 10;
+        overflow: hidden;
+      }
+
+      /* Traditional Kasavu Border at the top */
+      .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: repeating-linear-gradient(
+          90deg,
+          #ffd700 0px,
+          #ffd700 12px,
+          #0d5c34 12px,
+          #0d5c34 14px,
+          #ffd700 14px,
+          #ffd700 24px,
+          #ff9933 24px,
+          #ff9933 26px
+        );
+      }
+
+      /* Header Section */
+      .header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      /* Logo Halo Effect */
+      .logo-wrapper {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pookalam-halo {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #ff3300 0deg 30deg, 
+          #ffcc00 30deg 60deg, 
+          #0d5c34 60deg 90deg, 
+          #ffffff 90deg 120deg, 
+          #ffd700 120deg 150deg,
+          #ff9933 150deg 180deg,
+          #ff3300 180deg 210deg,
+          #ffcc00 210deg 240deg,
+          #0d5c34 240deg 270deg,
+          #ffffff 270deg 300deg,
+          #ffd700 300deg 330deg,
+          #ff9933 330deg 360deg
+        );
+        animation: spinPookalam 20s linear infinite;
+        mask: radial-gradient(circle, transparent 72%, black 73%);
+        -webkit-mask: radial-gradient(circle, transparent 72%, black 73%);
+        box-shadow: 0 0 15px rgba(255, 153, 0, 0.15);
+      }
+
+      @keyframes spinPookalam {
+        to { transform: rotate(360deg); }
+      }
+
+      .logo {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ffd700;
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(218, 165, 32, 0.25);
+      }
+
+      h1 {
+        font-family: 'Cinzel', serif;
+        color: #0d5c34;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        letter-spacing: 0.5px;
+      }
+
+      .subtitle {
+        color: #8b6b00;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .event-details {
+        display: inline-flex;
+        justify-content: center;
+        gap: 16px;
+        font-size: 13.5px;
+        color: #444;
+        font-weight: 600;
+        background: #fdfcf7;
+        padding: 8px 18px;
+        border-radius: 30px;
+        border: 1px solid #f0e6cc;
+        margin-bottom: 12px;
+      }
+
+      .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .detail-icon {
+        font-size: 15px;
+      }
+
+      /* Countdown Banner */
+      .countdown-container {
+        background: linear-gradient(135deg, #136F3F 0%, #0d5c34 100%);
+        padding: 14px;
+        border-radius: 16px;
+        text-align: center;
+        margin-bottom: 24px;
+        box-shadow: 0 6px 15px rgba(13, 92, 52, 0.15);
+        border: 1px solid rgba(255, 215, 0, 0.25);
+      }
+
+      .countdown-title {
+        color: #ffd700;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .countdown-grid {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .countdown-box {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 6px;
+        min-width: 55px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .countdown-val {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+
+      .countdown-label {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 3px;
+      }
+
+      .countdown-closed-msg {
+        display: none;
+        color: #ff5555;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .countdown-container.expired {
+        background: #fdf2f2;
+        border-color: #fca5a5;
+      }
+
+      .countdown-container.expired .countdown-title,
+      .countdown-container.expired .countdown-grid {
+        display: none;
+      }
+
+      .countdown-container.expired .countdown-closed-msg {
+        display: block;
+      }
+
+      /* Stepper */
+      .stepper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 28px;
+        position: relative;
+        padding: 0 10px;
+      }
+
+      .step-dot {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #f1ebd9;
+        color: #8b6b00;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 13px;
+        border: 2px solid #eae0cc;
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+
+      .step-dot.active {
+        background-color: #0d5c34;
+        color: #ffffff;
+        border-color: #ffd700;
+        box-shadow: 0 0 10px rgba(13, 92, 52, 0.2);
+      }
+
+      .step-dot.completed {
+        background-color: #ffd700;
+        color: #0d5c34;
+        border-color: #0d5c34;
+      }
+
+      .step-line {
+        flex-grow: 1;
+        height: 3px;
+        background-color: #eae0cc;
+        margin: 0 6px;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .step-line.completed {
+        background-color: #ffd700;
+      }
+
+      /* Card Transitions */
+      .form-card {
+        display: none;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .form-card.show {
+        display: block;
+      }
+
+      .form-card.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .card-heading {
+        font-family: 'Cinzel', serif;
+        color: #0d5c34;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        text-align: center;
+      }
+
+      .card-subheading {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* Form Elements */
+      .form-group {
+        margin-bottom: 18px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+        font-size: 13.5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"] {
+        width: 100%;
+        padding: 12px 14px;
+        border: 2px solid #eae0cc;
+        border-radius: 10px;
+        font-size: 14.5px;
+        background-color: #fdfcf7;
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus {
+        outline: none;
+        border-color: #ffd700;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+      }
+
+      /* Counters Styling */
+      .counter-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: #fdfbf7;
+        border: 1px solid #f0e6cc;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        transition: all 0.25s ease;
+      }
+
+      .counter-row:hover {
+        border-color: #ffd700;
+        box-shadow: 0 4px 10px rgba(218, 165, 32, 0.06);
+      }
+
+      .counter-info {
+        flex-grow: 1;
+        text-align: left;
+      }
+
+      .counter-title {
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .counter-desc {
+        font-size: 11px;
+        color: #777;
+        margin-top: 1px;
+      }
+
+      .counter-control {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .cnt-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        border: none;
+        background: #0d5c34;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cnt-btn:hover {
+        background: #136f3f;
+        transform: scale(1.05);
+      }
+
+      .cnt-btn:active {
+        transform: scale(0.95);
+      }
+
+      .cnt-input {
+        width: 36px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: #0d5c34;
+        border: none;
+        background: transparent;
+        outline: none;
+        -moz-appearance: textfield;
+      }
+
+      .cnt-input::-webkit-outer-spin-button,
+      .cnt-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* No Members Message on Step 3 */
+      .no-members-box {
+        text-align: center;
+        padding: 30px 20px;
+        background: #fdfcf7;
+        border: 1px dashed #eae0cc;
+        border-radius: 14px;
+        color: #666;
+      }
+
+      .no-members-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      .no-members-box p {
+        font-size: 14px;
+        font-weight: 500;
+        color: #555;
+      }
+
+      .no-members-box .subtext {
+        font-size: 12px;
+        color: #888;
+        margin-top: 4px;
+      }
+
+      /* Summary Box Styling */
+      .summary-card {
+        background: #fdfcf7;
+        border: 1px solid #f0e6cc;
+        border-radius: 14px;
+        padding: 18px;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .summary-section h3 {
+        font-family: 'Cinzel', serif;
+        color: #0d5c34;
+        font-size: 14px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eae0cc;
+        padding-bottom: 4px;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        font-size: 13.5px;
+      }
+
+      .summary-label {
+        color: #666;
+        font-weight: 500;
+      }
+
+      .summary-value {
+        color: #111;
+        font-weight: 600;
+      }
+
+      .summary-divider {
+        height: 1px;
+        background: #eae0cc;
+        margin: 12px 0;
+      }
+
+      .summary-names-list {
+        padding-left: 18px;
+        margin-top: 6px;
+        font-size: 13px;
+        color: #444;
+      }
+
+      .summary-names-list li {
+        margin-bottom: 4px;
+      }
+
+      /* Checkboxes Styling */
+      .checkbox-container {
+        margin: 18px 0;
+        text-align: left;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .checkbox-row input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #0d5c34;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .checkbox-row label {
+        font-size: 13px;
+        line-height: 1.45;
+        color: #444;
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /* Button Navigation Area */
+      .nav-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        gap: 12px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+        color: #0d5c34;
+        box-shadow: 0 4px 12px rgba(255, 170, 0, 0.25);
+        flex: 1.5;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1.5px);
+        box-shadow: 0 6px 16px rgba(255, 170, 0, 0.35);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+      }
+
+      .btn-primary:disabled {
+        background: #d1cbd4;
+        color: #888;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .btn-secondary {
+        background: #f1ebd9;
+        color: #8b6b00;
+        border: 1px solid #eae0cc;
+        flex: 1;
+      }
+
+      .btn-secondary:hover {
+        background: #eae1c8;
+      }
+
+      /* Success Screen */
+      .success-message {
+        display: none;
+        animation: slideUp 0.5s ease-out forwards;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .success-container {
+        text-align: center;
+      }
+
+      .success-header {
+        background: linear-gradient(135deg, #136F3F 0%, #0d5c34 100%);
+        padding: 30px 20px;
+        border-radius: 18px 18px 0 0;
+        color: white;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        border-bottom: none;
+      }
+
+      .success-icon-wrapper {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border: 2px solid #ffd700;
+      }
+
+      .success-icon {
+        font-size: 32px;
+        line-height: 1;
+        animation: scaleCheck 0.4s ease-out 0.3s forwards;
+      }
+
+      @keyframes scaleCheck {
+        0% { transform: scale(0); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+
+      .success-title {
+        font-family: 'Cinzel', serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffd700;
+      }
+
+      .success-body {
+        background: #fdfcf7;
+        padding: 30px 24px;
+        border-radius: 0 0 18px 18px;
+        border: 1px solid #f0e6cc;
+        border-top: 3px solid #ffd700;
+      }
+
+      .success-message-text {
+        font-size: 15px;
+        color: #0d5c34;
+        margin-bottom: 12px;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .success-subtext {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      .success-highlight {
+        color: #d48800;
+        font-weight: 700;
+      }
+
+      .thank-you-text {
+        margin-top: 20px;
+        font-family: 'Cinzel', serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #0d5c34;
+      }
+
+      /* Closed Card Styling */
+      .closed-card {
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .closed-icon {
+        font-size: 54px;
+        margin-bottom: 16px;
+      }
+
+      .closed-card h2 {
+        font-family: 'Cinzel', serif;
+        color: #851c1c;
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .closed-card p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .closed-contact {
+        background: #fff5f5;
+        border: 1px solid #fecaca;
+        border-radius: 12px;
+        padding: 14px;
+        font-size: 13px;
+        color: #991b1b;
+        font-weight: 500;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 30px 20px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .subtitle {
+          font-size: 11px;
+        }
+
+        .event-details {
+          flex-direction: column;
+          gap: 6px;
+          border-radius: 16px;
+          padding: 10px 14px;
+        }
+
+        .countdown-grid {
+          gap: 6px;
+        }
+
+        .countdown-box {
+          min-width: 46px;
+          padding: 4px;
+        }
+
+        .countdown-val {
+          font-size: 16px;
+        }
+
+        .countdown-label {
+          font-size: 7px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Form Header (Visible on form and success screen initially) -->
+      <div class="header" id="formHeader">
+        <div class="logo-wrapper">
+          <div class="pookalam-halo"></div>
+          <img src="icon.png" alt="Logo" class="logo" />
+        </div>
+        <h1>Onam 2026</h1>
+        <p class="subtitle">Mallus in Ingolstadt</p>
+        <div class="event-details">
+          <div class="detail-item">
+            <span class="detail-icon">📅</span>
+            <span>05 September 2026</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">📍</span>
+            <span>Ingolstadt, Germany</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Realtime Countdown Timer -->
+      <div class="countdown-container" id="countdownContainer">
+        <div class="countdown-title">Registration Closes In:</div>
+        <div class="countdown-grid" id="countdownGrid">
+          <div class="countdown-box">
+            <span class="countdown-val" id="daysVal">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-val" id="hoursVal">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-val" id="minutesVal">00</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-val" id="secondsVal">00</span>
+            <span class="countdown-label">Secs</span>
+          </div>
+        </div>
+        <div class="countdown-closed-msg" id="countdownClosedMsg">Registration Closed</div>
+      </div>
+
+      <!-- Registration Form Section -->
+      <div id="formSection">
+        <!-- Progressive Card Indicator -->
+        <div class="stepper">
+          <div class="step-dot active" id="stepDot1">1</div>
+          <div class="step-line" id="stepLine1"></div>
+          <div class="step-dot" id="stepDot2">2</div>
+          <div class="step-line" id="stepLine2"></div>
+          <div class="step-dot" id="stepDot3">3</div>
+          <div class="step-line" id="stepLine3"></div>
+          <div class="step-dot" id="stepDot4">4</div>
+        </div>
+
+        <form action="https://submit-form.com/zv2jumcer" id="onamForm">
+          <!-- CARD 1: Primary Applicant Details -->
+          <div class="form-card active show" id="card1">
+            <h2 class="card-heading">Contact Information</h2>
+            <p class="card-subheading">Please provide your primary contact details.</p>
+            
+            <div class="form-group">
+              <label for="primaryName">Full Name *</label>
+              <input
+                type="text"
+                id="primaryName"
+                name="Applicant Full Name"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="primaryEmail">Email Address *</label>
+              <input
+                type="email"
+                id="primaryEmail"
+                name="Applicant Email"
+                placeholder="Enter your email address"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="primaryPhone">Phone Number *</label>
+              <input
+                type="tel"
+                id="primaryPhone"
+                name="Applicant Phone"
+                placeholder="e.g., +49 123 4567890"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- CARD 2: Additional Members Count -->
+          <div class="form-card" id="card2">
+            <h2 class="card-heading">Additional Members</h2>
+            <p class="card-subheading">Are you bringing any family members or friends?</p>
+
+            <div class="counter-row">
+              <div class="counter-info">
+                <div class="counter-title">Kids (below 6)</div>
+                <div class="counter-desc">Free admission</div>
+              </div>
+              <div class="counter-control">
+                <button type="button" class="cnt-btn minus" data-target="kidsUnder6">-</button>
+                <input type="number" id="kidsUnder6" name="Additional Kids (below 6) Count" class="cnt-input" value="0" readonly />
+                <button type="button" class="cnt-btn plus" data-target="kidsUnder6">+</button>
+              </div>
+            </div>
+
+            <div class="counter-row">
+              <div class="counter-info">
+                <div class="counter-title">Kids (6 - 12)</div>
+                <div class="counter-desc">Ages 6 to 12 (6 included)</div>
+              </div>
+              <div class="counter-control">
+                <button type="button" class="cnt-btn minus" data-target="kids6to12">-</button>
+                <input type="number" id="kids6to12" name="Additional Kids (6 - 12) Count" class="cnt-input" value="0" readonly />
+                <button type="button" class="cnt-btn plus" data-target="kids6to12">+</button>
+              </div>
+            </div>
+
+            <div class="counter-row">
+              <div class="counter-info">
+                <div class="counter-title">Adult Members</div>
+                <div class="counter-desc">Ages 13 and above</div>
+              </div>
+              <div class="counter-control">
+                <button type="button" class="cnt-btn minus" data-target="adults">-</button>
+                <input type="number" id="adults" name="Additional Adults Count" class="cnt-input" value="0" readonly />
+                <button type="button" class="cnt-btn plus" data-target="adults">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: Additional Members Names -->
+          <div class="form-card" id="card3">
+            <h2 class="card-heading">Group Member Names</h2>
+            <p class="card-subheading" id="card3Subheading">Please provide the name of each additional member.</p>
+            <div id="dynamicNamesContainer">
+              <!-- Dynamically populated via Javascript -->
+            </div>
+          </div>
+
+          <!-- CARD 4: Summary & Submission -->
+          <div class="form-card" id="card4">
+            <h2 class="card-heading">Review Details</h2>
+            <p class="card-subheading">Verify your information before submitting.</p>
+
+            <div class="summary-card">
+              <div class="summary-section">
+                <h3>Primary Applicant</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Full Name:</span>
+                  <span class="summary-value" id="sumName">-</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Email:</span>
+                  <span class="summary-value" id="sumEmail">-</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Phone:</span>
+                  <span class="summary-value" id="sumPhone">-</span>
+                </div>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-section">
+                <h3>Additional Members</h3>
+                <div class="summary-row">
+                  <span class="summary-label">Kids (below 6):</span>
+                  <span class="summary-value" id="sumKidsUnder6">0</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Kids (6 - 12):</span>
+                  <span class="summary-value" id="sumKids6to12">0</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Adults:</span>
+                  <span class="summary-value" id="sumAdults">0</span>
+                </div>
+
+                <div id="sumNamesSection" style="display: none;">
+                  <span class="summary-label" style="display: block; margin-top: 12px; margin-bottom: 6px; font-weight: 600;">Additional Names:</span>
+                  <ul class="summary-names-list" id="sumNamesList">
+                    <!-- Populated dynamically -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkbox-container">
+              <div class="checkbox-row">
+                <input type="checkbox" id="verifyInfo" name="Verified Info Statement" value="Yes - I verified the details" required />
+                <label for="verifyInfo">I have made sure the above information is verified.</label>
+              </div>
+              <div class="checkbox-row">
+                <input type="checkbox" id="agreePay" name="Payment Obligation Statement" value="Yes - I agree to pay" required />
+                <label for="agreePay">I am ready to pay the required amount for the event, at any cost (for example, even if we cannot make it).</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shared Form Navigation Controls -->
+          <div class="nav-actions">
+            <button type="button" class="btn btn-secondary" id="backBtn" style="visibility: hidden;">Back</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">Submit Registration</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Closed Registration Screen -->
+      <div id="closedSection" style="display: none;">
+        <div class="closed-card">
+          <div class="closed-icon">⏳</div>
+          <h2>Registration Closed</h2>
+          <p>We are sorry, but registrations for Onam 2026 in Ingolstadt are now officially closed. The deadline was 18th June 2026.</p>
+          <div class="closed-contact">
+            For urgent requests or changes regarding existing registrations, please contact the organizers directly in the WhatsApp group.
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Screen -->
+      <div class="success-message" id="successMessage">
+        <div class="success-container">
+          <div class="success-header">
+            <div class="success-icon-wrapper">
+              <span class="success-icon">🌸</span>
+            </div>
+            <div class="success-title">Registration Submitted!</div>
+          </div>
+          <div class="success-body">
+            <div class="success-message-text">
+              We are excited to celebrate Onam with you!
+            </div>
+            <div class="success-subtext">
+              Your details have been successfully saved.
+            </div>
+            <div class="success-subtext">
+              We will contact you shortly at the provided phone number regarding your <span class="success-highlight">confirmation and payment contribution details</span>.
+            </div>
+
+            <div class="thank-you-text">
+              Thank you! 🌾
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 1. Falling Petals Effect
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        
+        const rand = Math.random();
+        if (rand < 0.45) {
+          petal.classList.add("marigold-yellow");
+          petal.style.width = Math.random() * 8 + 8 + "px";
+          petal.style.height = Math.random() * 8 + 8 + "px";
+          petal.style.borderRadius = "50% 0 50% 50%";
+        } else if (rand < 0.85) {
+          petal.classList.add("marigold-orange");
+          petal.style.width = Math.random() * 8 + 8 + "px";
+          petal.style.height = Math.random() * 8 + 8 + "px";
+          petal.style.borderRadius = "50% 0 50% 50%";
+        } else {
+          petal.classList.add("jasmine");
+          petal.style.width = Math.random() * 5 + 4 + "px";
+          petal.style.height = Math.random() * 9 + 7 + "px";
+          petal.style.borderRadius = "50%";
+        }
+        
+        petal.style.left = Math.random() * 100 + "vw";
+        const duration = Math.random() * 4 + 4; // 4s to 8s
+        petal.style.animationDuration = duration + "s";
+        
+        const delay = Math.random() * 3;
+        petal.style.animationDelay = -delay + "s"; // Offset start so particles don't all appear at once
+        
+        document.body.appendChild(petal);
+        
+        setTimeout(() => {
+          petal.remove();
+        }, (duration + delay) * 1000);
+      }
+
+      // Generate initial batch of petals
+      for (let i = 0; i < 20; i++) {
+        createPetal();
+      }
+      // Generate new petals continuously
+      setInterval(createPetal, 350);
+
+      // 2. Countdown Logic (Deadline: 18th June 2026 23:59:59 CET/CEST)
+      const targetDate = new Date("2026-06-18T23:59:59+02:00").getTime();
+      let isFormClosed = false;
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          // Closed state
+          document.getElementById("countdownContainer").classList.add("expired");
+          document.getElementById("formSection").style.display = "none";
+          document.getElementById("closedSection").style.display = "block";
+          isFormClosed = true;
+          return true;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("daysVal").textContent = days.toString().padStart(2, '0');
+        document.getElementById("hoursVal").textContent = hours.toString().padStart(2, '0');
+        document.getElementById("minutesVal").textContent = minutes.toString().padStart(2, '0');
+        document.getElementById("secondsVal").textContent = seconds.toString().padStart(2, '0');
+        return false;
+      }
+
+      // Run countdown immediately and update every second
+      const timer = setInterval(() => {
+        const closed = updateCountdown();
+        if (closed) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      updateCountdown();
+
+      // 3. Counter Management
+      document.querySelectorAll(".cnt-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-target");
+          const input = document.getElementById(targetId);
+          let val = parseInt(input.value) || 0;
+          
+          if (btn.classList.contains("plus")) {
+            val++;
+          } else if (btn.classList.contains("minus")) {
+            if (val > 0) val--;
+          }
+          
+          input.value = val;
+        });
+      });
+
+      // 4. Form Card Navigation Flow
+      let currentStep = 1;
+      const totalSteps = 4;
+      const backBtn = document.getElementById("backBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const submitBtn = document.getElementById("submitBtn");
+
+      function updateStepUI() {
+        // Remove active class from all cards
+        for (let i = 1; i <= totalSteps; i++) {
+          const card = document.getElementById(`card${i}`);
+          card.classList.remove("active", "show");
+        }
+
+        // Show current step card with brief reflow delay for transition effect
+        const activeCard = document.getElementById(`card${currentStep}`);
+        activeCard.classList.add("show");
+        activeCard.offsetHeight; // Force reflow
+        activeCard.classList.add("active");
+
+        // Stepper dots progress update
+        for (let i = 1; i <= totalSteps; i++) {
+          const dot = document.getElementById(`stepDot${i}`);
+          const line = document.getElementById(`stepLine${i}`);
+          
+          if (i < currentStep) {
+            dot.className = "step-dot completed";
+            if (line) line.className = "step-line completed";
+          } else if (i === currentStep) {
+            dot.className = "step-dot active";
+            if (line) line.className = "step-line";
+          } else {
+            dot.className = "step-dot";
+            if (line) line.className = "step-line";
+          }
+        }
+
+        // Visibility of buttons
+        if (currentStep === 1) {
+          backBtn.style.visibility = "hidden";
+        } else {
+          backBtn.style.visibility = "visible";
+        }
+
+        if (currentStep === totalSteps) {
+          nextBtn.style.display = "none";
+          submitBtn.style.display = "block";
+        } else {
+          nextBtn.style.display = "block";
+          submitBtn.style.display = "none";
+        }
+      }
+
+      // Step Validation Logic
+      function validateStep() {
+        if (currentStep === 1) {
+          const nameInput = document.getElementById("primaryName");
+          const emailInput = document.getElementById("primaryEmail");
+          const phoneInput = document.getElementById("primaryPhone");
+
+          if (!nameInput.checkValidity()) { nameInput.reportValidity(); return false; }
+          if (!emailInput.checkValidity()) { emailInput.reportValidity(); return false; }
+          if (!phoneInput.checkValidity()) { phoneInput.reportValidity(); return false; }
+          return true;
+        }
+
+        if (currentStep === 2) {
+          // Counter page doesn't need field validation as counters are readonly & limited
+          return true;
+        }
+
+        if (currentStep === 3) {
+          const dynamicInputs = document.querySelectorAll(".dynamic-member-name");
+          for (let i = 0; i < dynamicInputs.length; i++) {
+            if (!dynamicInputs[i].checkValidity()) {
+              dynamicInputs[i].reportValidity();
+              return false;
+            }
+          }
+          return true;
+        }
+
+        return true;
+      }
+
+      // Dynamic Generation of names inside Card 3
+      function populateCard3() {
+        const container = document.getElementById("dynamicNamesContainer");
+        container.innerHTML = "";
+
+        const kidsUnder6 = parseInt(document.getElementById("kidsUnder6").value) || 0;
+        const kids6to12 = parseInt(document.getElementById("kids6to12").value) || 0;
+        const adults = parseInt(document.getElementById("adults").value) || 0;
+        const totalAccompanying = kidsUnder6 + kids6to12 + adults;
+
+        if (totalAccompanying === 0) {
+          container.innerHTML = `
+            <div class="no-members-box">
+              <div class="no-members-icon">🌾</div>
+              <p>You have not added any additional members.</p>
+              <p class="subtext">Click <strong>Next</strong> to proceed directly to the summary.</p>
+            </div>
+          `;
+          return;
+        }
+
+        let index = 1;
+        
+        // Kids Under 6 Name Inputs
+        for (let i = 1; i <= kidsUnder6; i++) {
+          createNameInputField(container, `Member ${index} Name (Kid under 6)`, `member_under6_${i}`, `Enter name`);
+          index++;
+        }
+
+        // Kids 6-12 Name Inputs
+        for (let i = 1; i <= kids6to12; i++) {
+          createNameInputField(container, `Member ${index} Name (Kid 6-12)`, `member_6to12_${i}`, `Enter name`);
+          index++;
+        }
+
+        // Adults Name Inputs
+        for (let i = 1; i <= adults; i++) {
+          createNameInputField(container, `Member ${index} Name (Adult)`, `member_adult_${i}`, `Enter name`);
+          index++;
+        }
+      }
+
+      function createNameInputField(container, labelText, inputId, placeholder) {
+        const group = document.createElement("div");
+        group.classList.add("form-group");
+
+        const label = document.createElement("label");
+        label.setAttribute("for", inputId);
+        label.textContent = labelText + " *";
+
+        const input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", inputId);
+        input.setAttribute("name", labelText);
+        input.setAttribute("placeholder", placeholder);
+        input.setAttribute("required", "true");
+        input.classList.add("dynamic-member-name");
+
+        group.appendChild(label);
+        group.appendChild(input);
+        container.appendChild(group);
+      }
+
+      // Summary Generation inside Card 4
+      function populateCard4() {
+        document.getElementById("sumName").textContent = document.getElementById("primaryName").value;
+        document.getElementById("sumEmail").textContent = document.getElementById("primaryEmail").value;
+        document.getElementById("sumPhone").textContent = document.getElementById("primaryPhone").value;
+
+        const kidsUnder6 = parseInt(document.getElementById("kidsUnder6").value) || 0;
+        const kids6to12 = parseInt(document.getElementById("kids6to12").value) || 0;
+        const adults = parseInt(document.getElementById("adults").value) || 0;
+
+        document.getElementById("sumKidsUnder6").textContent = kidsUnder6;
+        document.getElementById("sumKids6to12").textContent = kids6to12;
+        document.getElementById("sumAdults").textContent = adults;
+
+        const sumNamesList = document.getElementById("sumNamesList");
+        sumNamesList.innerHTML = "";
+
+        const nameInputs = document.querySelectorAll(".dynamic-member-name");
+        if (nameInputs.length > 0) {
+          document.getElementById("sumNamesSection").style.display = "block";
+          nameInputs.forEach(input => {
+            const li = document.createElement("li");
+            const label = document.querySelector(`label[for="${input.id}"]`);
+            const labelText = label ? label.textContent.replace(" *", "") : "Member Name";
+            li.innerHTML = `<strong>${labelText}:</strong> ${input.value}`;
+            sumNamesList.appendChild(li);
+          });
+        } else {
+          document.getElementById("sumNamesSection").style.display = "none";
+        }
+      }
+
+      // Nav Button Event Listeners
+      nextBtn.addEventListener("click", () => {
+        if (validateStep()) {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            if (currentStep === 3) {
+              populateCard3();
+            } else if (currentStep === 4) {
+              populateCard4();
+            }
+            updateStepUI();
+          }
+        }
+      });
+
+      backBtn.addEventListener("click", () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStepUI();
+        }
+      });
+
+      // 5. Submit Event Handler
+      const onamForm = document.getElementById("onamForm");
+
+      onamForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        if (isFormClosed) {
+          alert("Registration is closed. Submissions are no longer accepted.");
+          return;
+        }
+
+        // Validate checkboxes are checked
+        const verifyInfo = document.getElementById("verifyInfo");
+        const agreePay = document.getElementById("agreePay");
+        if (!verifyInfo.checked || !agreePay.checked) {
+          alert("Please verify the information and accept the payment conditions.");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+
+        // Collect all form data
+        const formData = new FormData(onamForm);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+
+        // Form submission via fetch
+        try {
+          const response = await fetch(onamForm.action, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            // Hide form and show success
+            document.getElementById("formSection").style.display = "none";
+            document.getElementById("formHeader").style.display = "none";
+            document.getElementById("countdownContainer").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
+          } else {
+            console.error("Submission failed:", response.statusText);
+            alert("Oops! Something went wrong with your submission. Please check the information and try again.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Registration";
+          }
+        } catch (error) {
+          console.error("Network error during submission:", error);
+          alert("A network error occurred. Please check your internet connection and try again.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit Registration";
+        }
+      });
+    </script>
+  </body>
+</html>
