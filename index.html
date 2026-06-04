@@ -18,7 +18,10 @@
 
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background: linear-gradient(135deg, #fbf8f0 0%, #fffdfc 50%, #f4edd4 100%);
+        background: radial-gradient(circle at 10% 20%, rgba(254, 240, 138, 0.4) 0%, rgba(254, 240, 138, 0) 40%),
+                    radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.25) 0%, rgba(251, 191, 36, 0) 50%),
+                    radial-gradient(circle at 50% 50%, rgba(254, 252, 232, 0.6) 0%, rgba(254, 240, 138, 0.3) 100%),
+                    linear-gradient(135deg, #fef9c3 0%, #fef08a 50%, #fde047 100%);
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -26,6 +29,70 @@
         padding: 30px 15px;
         position: relative;
         overflow-x: hidden;
+      }
+
+      /* Repeating Flower Pattern */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20c2.5-5 10-5 12.5 0 5 2.5 5 10 0 12.5-2.5 2.5-10 2.5-12.5 0M40 20c-2.5-5-10-5-12.5 0-5 2.5-5 10 0 12.5 2.5 2.5 10 2.5 12.5 0M40 40c2.5 5 10 5 12.5 0 5-2.5 5-10 0-12.5-2.5-2.5-10-2.5-12.5 0M40 40c-2.5 5-10 5-12.5 0-5-2.5-5-10 0-12.5 2.5-2.5 10-2.5 12.5 0' fill='%23d97706' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Rotating Background Flowers */
+      .bg-flower {
+        position: fixed;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.28;
+        transform-origin: center;
+        filter: drop-shadow(0 15px 30px rgba(218, 165, 32, 0.2));
+      }
+
+      .bg-flower-1 {
+        width: 550px;
+        height: 550px;
+        top: -150px;
+        right: -150px;
+        animation: spinPookalamRight 60s linear infinite;
+      }
+
+      .bg-flower-2 {
+        width: 450px;
+        height: 450px;
+        bottom: -100px;
+        left: -100px;
+        animation: spinPookalamLeft 50s linear infinite;
+      }
+
+      @keyframes spinPookalamRight {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes spinPookalamLeft {
+        from { transform: rotate(360deg); }
+        to { transform: rotate(0deg); }
+      }
+
+      @media (max-width: 600px) {
+        .bg-flower-1 {
+          width: 350px;
+          height: 350px;
+          top: -100px;
+          right: -100px;
+        }
+        .bg-flower-2 {
+          width: 280px;
+          height: 280px;
+          bottom: -80px;
+          left: -80px;
+        }
       }
 
       /* Falling Petals Animation */
@@ -71,37 +138,21 @@
 
       /* Core Layout */
       .container {
-        background: white;
-        border-radius: 24px;
-        box-shadow: 0 20px 50px rgba(13, 92, 52, 0.08), 0 0 0 1px rgba(218, 165, 32, 0.15);
+        background: rgba(255, 255, 255, 0.42);
+        border-radius: 28px;
+        box-shadow: 0 20px 50px rgba(13, 92, 52, 0.1), 0 0 0 1px rgba(218, 165, 32, 0.25);
         max-width: 520px;
         width: 100%;
         padding: 40px 30px;
         position: relative;
         z-index: 10;
         overflow: hidden;
+        backdrop-filter: blur(24px) saturate(170%);
+        -webkit-backdrop-filter: blur(24px) saturate(170%);
+        transition: all 0.3s ease;
       }
 
-      /* Traditional Kasavu Border at the top */
-      .container::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 8px;
-        background: repeating-linear-gradient(
-          90deg,
-          #ffd700 0px,
-          #ffd700 12px,
-          #0d5c34 12px,
-          #0d5c34 14px,
-          #ffd700 14px,
-          #ffd700 24px,
-          #ff9933 24px,
-          #ff9933 26px
-        );
-      }
+
 
       /* Header Section */
       .header {
@@ -182,12 +233,14 @@
         justify-content: center;
         gap: 16px;
         font-size: 13.5px;
-        color: #444;
-        font-weight: 600;
-        background: #fdfcf7;
+        color: #0d5c34;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
         padding: 8px 18px;
         border-radius: 30px;
-        border: 1px solid #f0e6cc;
+        border: 1px solid rgba(218, 165, 32, 0.25);
         margin-bottom: 12px;
       }
 
@@ -203,13 +256,15 @@
 
       /* Countdown Banner */
       .countdown-container {
-        background: linear-gradient(135deg, #136F3F 0%, #0d5c34 100%);
+        background: rgba(13, 92, 52, 0.8);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         padding: 14px;
         border-radius: 16px;
         text-align: center;
         margin-bottom: 24px;
         box-shadow: 0 6px 15px rgba(13, 92, 52, 0.15);
-        border: 1px solid rgba(255, 215, 0, 0.25);
+        border: 1px solid rgba(255, 215, 0, 0.3);
       }
 
       .countdown-title {
@@ -263,8 +318,10 @@
       }
 
       .countdown-container.expired {
-        background: #fdf2f2;
-        border-color: #fca5a5;
+        background: rgba(254, 226, 226, 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-color: rgba(239, 68, 68, 0.4);
       }
 
       .countdown-container.expired .countdown-title,
@@ -290,14 +347,14 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background-color: #f1ebd9;
+        background-color: rgba(255, 255, 255, 0.55);
         color: #8b6b00;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 700;
         font-size: 13px;
-        border: 2px solid #eae0cc;
+        border: 2px solid rgba(218, 165, 32, 0.25);
         transition: all 0.3s ease;
         z-index: 2;
       }
@@ -318,7 +375,7 @@
       .step-line {
         flex-grow: 1;
         height: 3px;
-        background-color: #eae0cc;
+        background-color: rgba(218, 165, 32, 0.25);
         margin: 0 6px;
         z-index: 1;
         transition: all 0.3s ease;
@@ -381,11 +438,12 @@
       input[type="tel"] {
         width: 100%;
         padding: 12px 14px;
-        border: 2px solid #eae0cc;
-        border-radius: 10px;
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        border-radius: 12px;
         font-size: 14.5px;
-        background-color: #fdfcf7;
+        background-color: rgba(255, 255, 255, 0.5);
         font-family: inherit;
+        color: #111;
         transition: all 0.3s ease;
       }
 
@@ -394,8 +452,8 @@
       input[type="tel"]:focus {
         outline: none;
         border-color: #ffd700;
-        background-color: #ffffff;
-        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.25);
       }
 
       /* Counters Styling */
@@ -404,8 +462,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 14px 16px;
-        background: #fdfbf7;
-        border: 1px solid #f0e6cc;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(218, 165, 32, 0.2);
         border-radius: 12px;
         margin-bottom: 12px;
         transition: all 0.25s ease;
@@ -413,7 +471,8 @@
 
       .counter-row:hover {
         border-color: #ffd700;
-        box-shadow: 0 4px 10px rgba(218, 165, 32, 0.06);
+        background: rgba(255, 255, 255, 0.65);
+        box-shadow: 0 4px 12px rgba(218, 165, 32, 0.08);
       }
 
       .counter-info {
@@ -486,10 +545,10 @@
       .no-members-box {
         text-align: center;
         padding: 30px 20px;
-        background: #fdfcf7;
-        border: 1px dashed #eae0cc;
+        background: rgba(255, 255, 255, 0.35);
+        border: 1px dashed rgba(218, 165, 32, 0.3);
         border-radius: 14px;
-        color: #666;
+        color: #555;
       }
 
       .no-members-icon {
@@ -511,8 +570,8 @@
 
       /* Summary Box Styling */
       .summary-card {
-        background: #fdfcf7;
-        border: 1px solid #f0e6cc;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(218, 165, 32, 0.2);
         border-radius: 14px;
         padding: 18px;
         margin-bottom: 20px;
@@ -642,14 +701,17 @@
       }
 
       .btn-secondary {
-        background: #f1ebd9;
+        background: rgba(255, 255, 255, 0.45);
         color: #8b6b00;
-        border: 1px solid #eae0cc;
+        border: 1px solid rgba(218, 165, 32, 0.25);
         flex: 1;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
       }
 
       .btn-secondary:hover {
-        background: #eae1c8;
+        background: rgba(255, 255, 255, 0.65);
+        border-color: rgba(218, 165, 32, 0.4);
       }
 
       /* Success Screen */
@@ -674,11 +736,13 @@
       }
 
       .success-header {
-        background: linear-gradient(135deg, #136F3F 0%, #0d5c34 100%);
+        background: rgba(13, 92, 52, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         padding: 30px 20px;
         border-radius: 18px 18px 0 0;
         color: white;
-        border: 1px solid rgba(255, 215, 0, 0.2);
+        border: 1px solid rgba(255, 215, 0, 0.25);
         border-bottom: none;
       }
 
@@ -715,10 +779,12 @@
       }
 
       .success-body {
-        background: #fdfcf7;
+        background: rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         padding: 30px 24px;
         border-radius: 0 0 18px 18px;
-        border: 1px solid #f0e6cc;
+        border: 1px solid rgba(218, 165, 32, 0.2);
         border-top: 3px solid #ffd700;
       }
 
@@ -825,6 +891,91 @@
     </style>
   </head>
   <body>
+    <!-- Background SVG Pookalam (Floral Mandala) 1 -->
+    <svg class="bg-flower bg-flower-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="petal-group-1">
+          <path d="M100 100 C 95 80, 90 60, 100 40 C 110 60, 105 80, 100 100 Z" fill="#ff8800" opacity="0.85" />
+          <path d="M100 100 C 97 85, 93 70, 100 50 C 107 70, 103 85, 100 100 Z" fill="#ffd700" />
+        </g>
+        <g id="petal-group-2">
+          <path d="M100 100 C 90 70, 80 40, 100 15 C 120 40, 110 70, 100 100 Z" fill="#0d5c34" opacity="0.65" />
+          <path d="M100 100 C 93 75, 87 50, 100 25 C 113 50, 107 75, 100 100 Z" fill="#ffffff" opacity="0.9" />
+          <path d="M100 100 C 96 80, 92 60, 100 35 C 108 60, 104 80, 100 100 Z" fill="#ff3300" />
+        </g>
+      </defs>
+      <use href="#petal-group-2" transform="rotate(0 100 100)" />
+      <use href="#petal-group-2" transform="rotate(30 100 100)" />
+      <use href="#petal-group-2" transform="rotate(60 100 100)" />
+      <use href="#petal-group-2" transform="rotate(90 100 100)" />
+      <use href="#petal-group-2" transform="rotate(120 100 100)" />
+      <use href="#petal-group-2" transform="rotate(150 100 100)" />
+      <use href="#petal-group-2" transform="rotate(180 100 100)" />
+      <use href="#petal-group-2" transform="rotate(210 100 100)" />
+      <use href="#petal-group-2" transform="rotate(240 100 100)" />
+      <use href="#petal-group-2" transform="rotate(270 100 100)" />
+      <use href="#petal-group-2" transform="rotate(300 100 100)" />
+      <use href="#petal-group-2" transform="rotate(330 100 100)" />
+      
+      <use href="#petal-group-1" transform="rotate(15 100 100)" />
+      <use href="#petal-group-1" transform="rotate(45 100 100)" />
+      <use href="#petal-group-1" transform="rotate(75 100 100)" />
+      <use href="#petal-group-1" transform="rotate(105 100 100)" />
+      <use href="#petal-group-1" transform="rotate(135 100 100)" />
+      <use href="#petal-group-1" transform="rotate(165 100 100)" />
+      <use href="#petal-group-1" transform="rotate(195 100 100)" />
+      <use href="#petal-group-1" transform="rotate(225 100 100)" />
+      <use href="#petal-group-1" transform="rotate(255 100 100)" />
+      <use href="#petal-group-1" transform="rotate(285 100 100)" />
+      <use href="#petal-group-1" transform="rotate(315 100 100)" />
+      <use href="#petal-group-1" transform="rotate(345 100 100)" />
+      <circle cx="100" cy="100" r="18" fill="#ffd700" />
+      <circle cx="100" cy="100" r="10" fill="#0d5c34" />
+      <circle cx="100" cy="100" r="5" fill="#ff3300" />
+    </svg>
+
+    <!-- Background SVG Pookalam (Floral Mandala) 2 -->
+    <svg class="bg-flower bg-flower-2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="petal-group-2-1">
+          <path d="M100 100 C 95 82, 92 64, 100 45 C 108 64, 105 82, 100 100 Z" fill="#ffcc00" />
+          <path d="M100 100 C 97 87, 95 74, 100 55 C 105 74, 103 87, 100 100 Z" fill="#ff9933" />
+        </g>
+        <g id="petal-group-2-2">
+          <path d="M100 100 C 92 73, 85 46, 100 20 C 115 46, 108 73, 100 100 Z" fill="#ff3300" opacity="0.8" />
+          <path d="M100 100 C 95 78, 90 56, 100 32 C 110 56, 105 78, 100 100 Z" fill="#0d5c34" opacity="0.9" />
+          <path d="M100 100 C 97 82, 94 64, 100 42 C 106 64, 103 82, 100 100 Z" fill="#ffffff" />
+        </g>
+      </defs>
+      <use href="#petal-group-2-2" transform="rotate(0 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(30 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(60 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(90 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(120 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(150 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(180 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(210 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(240 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(270 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(300 100 100)" />
+      <use href="#petal-group-2-2" transform="rotate(330 100 100)" />
+      
+      <use href="#petal-group-2-1" transform="rotate(15 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(45 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(75 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(105 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(135 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(165 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(195 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(225 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(255 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(285 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(315 100 100)" />
+      <use href="#petal-group-2-1" transform="rotate(345 100 100)" />
+      <circle cx="100" cy="100" r="16" fill="#ffcc00" />
+      <circle cx="100" cy="100" r="9" fill="#ff3300" />
+    </svg>
+
     <div class="container">
       <!-- Form Header (Visible on form and success screen initially) -->
       <div class="header" id="formHeader">
