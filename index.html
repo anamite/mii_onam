@@ -584,6 +584,15 @@
         transform: scale(0.95);
       }
 
+      .cnt-btn:disabled {
+        background: #a3c4b4;
+        color: #ffffff;
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
+        pointer-events: none;
+      }
+
       .cnt-input {
         width: 36px;
         text-align: center;
@@ -1154,7 +1163,7 @@
           <!-- CARD 2: Additional Members Count -->
           <div class="form-card" id="card2">
             <h2 class="card-heading">Additional Members</h2>
-            <p class="card-subheading">Are you bringing any family members or friends? <br />(excluding yourself)</p>
+            <p class="card-subheading">Are you bringing any family members or friends? <br />(excluding yourself, max 5 per category)</p>
 
             <div class="counter-row">
               <div class="counter-info">
@@ -1195,8 +1204,8 @@
 
           <!-- CARD 3: Additional Members Names -->
           <div class="form-card" id="card3">
-            <h2 class="card-heading">Group Member Names</h2>
-            <p class="card-subheading" id="card3Subheading">Please provide the name of each additional member.</p>
+            <h2 class="card-heading">Additional Member Names</h2>
+            <p class="card-subheading" id="card3Subheading">Please provide the name of each additional member. <br /> <b>(NOT the primary applicant)</b></p>
             <div id="dynamicNamesContainer">
               <!-- Dynamically populated via Javascript -->
             </div>
@@ -1398,6 +1407,21 @@
       }, 1000);
       updateCountdown();
 
+      // Helper to update counter button states based on value limit (max 5)
+      function updateCounterButtons(targetId) {
+        const input = document.getElementById(targetId);
+        const val = parseInt(input.value) || 0;
+        const minusBtn = document.querySelector(`.cnt-btn.minus[data-target="${targetId}"]`);
+        const plusBtn = document.querySelector(`.cnt-btn.plus[data-target="${targetId}"]`);
+        
+        if (minusBtn) {
+          minusBtn.disabled = (val <= 0);
+        }
+        if (plusBtn) {
+          plusBtn.disabled = (val >= 5);
+        }
+      }
+
       // 3. Counter Management
       document.querySelectorAll(".cnt-btn").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -1406,14 +1430,22 @@
           let val = parseInt(input.value) || 0;
           
           if (btn.classList.contains("plus")) {
-            val++;
+            if (val < 5) {
+              val++;
+            }
           } else if (btn.classList.contains("minus")) {
-            if (val > 0) val--;
+            if (val > 0) {
+              val--;
+            }
           }
           
           input.value = val;
+          updateCounterButtons(targetId);
         });
       });
+
+      // Initialize counter button states on page load
+      ['kidsUnder6', 'kids6to12', 'adults'].forEach(updateCounterButtons);
 
       // 4. Form Card Navigation Flow
       let currentStep = 1;
