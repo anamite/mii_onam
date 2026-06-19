@@ -456,6 +456,67 @@
         box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.25);
       }
 
+      /* Reachable Segmented Toggle */
+      .segmented-control {
+        display: flex;
+        position: relative;
+        background: rgba(255, 255, 255, 0.4);
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        border-radius: 12px;
+        padding: 3px;
+        user-select: none;
+        margin-top: 6px;
+      }
+
+      .segmented-control input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .segmented-control label.segmented-option {
+        flex: 1;
+        text-align: center;
+        padding: 10px 0;
+        margin-bottom: 0;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #555;
+        cursor: pointer;
+        z-index: 2;
+        transition: color 0.25s ease;
+        border-radius: 8px;
+      }
+
+      .segmented-control input[type="radio"]:checked + label.segmented-option {
+        color: #0d5c34;
+      }
+
+      .segmented-slider {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: calc((100% - 6px) / 3);
+        height: calc(100% - 6px);
+        background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+        border-radius: 8px;
+        transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 1;
+        box-shadow: 0 2px 6px rgba(255, 170, 0, 0.2);
+      }
+
+      #reachableCall:checked ~ .segmented-slider {
+        transform: translateX(0);
+      }
+
+      #reachableWhatsapp:checked ~ .segmented-slider {
+        transform: translateX(100%);
+      }
+
+      #reachableBoth:checked ~ .segmented-slider {
+        transform: translateX(200%);
+      }
+
       /* Counters Styling */
       .counter-row {
         display: flex;
@@ -988,7 +1049,7 @@
         <div class="event-details">
           <div class="detail-item">
             <span class="detail-icon">📅</span>
-            <span>05 September 2026</span>
+            <span>12 September 2026</span>
           </div>
           <div class="detail-item">
             <span class="detail-icon">📍</span>
@@ -1072,6 +1133,22 @@
                 required
               />
             </div>
+
+            <div class="form-group">
+              <label>How are you reachable on this number? *</label>
+              <div class="segmented-control">
+                <input type="radio" id="reachableCall" name="Reachable Via" value="Call" checked />
+                <label for="reachableCall" class="segmented-option">Call</label>
+
+                <input type="radio" id="reachableWhatsapp" name="Reachable Via" value="Whatsapp" />
+                <label for="reachableWhatsapp" class="segmented-option">Whatsapp</label>
+
+                <input type="radio" id="reachableBoth" name="Reachable Via" value="Both" />
+                <label for="reachableBoth" class="segmented-option">Both</label>
+
+                <div class="segmented-slider"></div>
+              </div>
+            </div>
           </div>
 
           <!-- CARD 2: Additional Members Count -->
@@ -1145,6 +1222,10 @@
                   <span class="summary-label">Phone:</span>
                   <span class="summary-value" id="sumPhone">-</span>
                 </div>
+                <div class="summary-row">
+                  <span class="summary-label">Reachable Via:</span>
+                  <span class="summary-value" id="sumReachable">-</span>
+                </div>
               </div>
 
               <div class="summary-divider"></div>
@@ -1176,11 +1257,11 @@
             <div class="checkbox-container">
               <div class="checkbox-row">
                 <input type="checkbox" id="verifyInfo" name="Verified Info Statement" value="Yes - I verified the details" required />
-                <label for="verifyInfo">I have made sure the above information is verified.</label>
+                <label for="verifyInfo">I have made sure that the above information is verified and can be used to update me with any information.</label>
               </div>
               <div class="checkbox-row">
                 <input type="checkbox" id="agreePay" name="Payment Obligation Statement" value="Yes - I agree to pay" required />
-                <label for="agreePay">I am ready to pay the required amount for the event, at any cost (for example, even if we cannot make it).</label>
+                <label for="agreePay">I am ready to pay the required amount for the event.</label>
               </div>
             </div>
           </div>
@@ -1199,7 +1280,7 @@
         <div class="closed-card">
           <div class="closed-icon">⏳</div>
           <h2>Registration Closed</h2>
-          <p>We are sorry, but registrations for Onam 2026 in Ingolstadt are now officially closed. The deadline was 18th June 2026.</p>
+          <p>We are sorry, but registrations for Onam 2026 in Ingolstadt are now officially closed. The deadline was 19th July 2026.</p>
           <div class="closed-contact">
             For urgent requests or changes regarding existing registrations, please contact the organizers directly in the WhatsApp group.
           </div>
@@ -1223,7 +1304,7 @@
               Your details have been successfully saved.
             </div>
             <div class="success-subtext">
-              We will contact you shortly at the provided phone number regarding your <span class="success-highlight">confirmation and payment contribution details</span>.
+              We will contact you at the provided phone number and email regarding your <span class="success-highlight">confirmation and payment contribution details</span>.
             </div>
 
             <div class="thank-you-text">
@@ -1279,8 +1360,8 @@
       // Generate new petals continuously
       setInterval(createPetal, 350);
 
-      // 2. Countdown Logic (Deadline: 18th June 2026 23:59:59 CET/CEST)
-      const targetDate = new Date("2026-06-18T23:59:59+02:00").getTime();
+      // 2. Countdown Logic (Deadline: 19th July 2026 23:59:59 CET/CEST)
+      const targetDate = new Date("2026-07-19T23:59:59+02:00").getTime();
       let isFormClosed = false;
 
       function updateCountdown() {
@@ -1487,6 +1568,9 @@
         document.getElementById("sumName").textContent = document.getElementById("primaryName").value;
         document.getElementById("sumEmail").textContent = document.getElementById("primaryEmail").value;
         document.getElementById("sumPhone").textContent = document.getElementById("primaryPhone").value;
+
+        const reachableVal = document.querySelector('input[name="Reachable Via"]:checked').value;
+        document.getElementById("sumReachable").textContent = reachableVal;
 
         const kidsUnder6 = parseInt(document.getElementById("kidsUnder6").value) || 0;
         const kids6to12 = parseInt(document.getElementById("kids6to12").value) || 0;
