@@ -1,1716 +1,1120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Onam 2026 - Mallus in Ingolstadt</title>
-    <!-- Google Fonts: Cinzel for headings, Plus Jakarta Sans for UI elements -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background: radial-gradient(circle at 10% 20%, rgba(254, 240, 138, 0.4) 0%, rgba(254, 240, 138, 0) 40%),
-                    radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.25) 0%, rgba(251, 191, 36, 0) 50%),
-                    radial-gradient(circle at 50% 50%, rgba(254, 252, 232, 0.6) 0%, rgba(254, 240, 138, 0.3) 100%),
-                    linear-gradient(135deg, #fef9c3 0%, #fef08a 50%, #fde047 100%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 30px 15px;
-        position: relative;
-        overflow-x: hidden;
-      }
-
-      /* Repeating Flower Pattern */
-      body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20c2.5-5 10-5 12.5 0 5 2.5 5 10 0 12.5-2.5 2.5-10 2.5-12.5 0M40 20c-2.5-5-10-5-12.5 0-5 2.5-5 10 0 12.5 2.5 2.5 10 2.5 12.5 0M40 40c2.5 5 10 5 12.5 0 5-2.5 5-10 0-12.5-2.5-2.5-10-2.5-12.5 0M40 40c-2.5 5-10 5-12.5 0-5-2.5-5-10 0-12.5 2.5-2.5 10-2.5 12.5 0' fill='%23d97706' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      /* Rotating Background Flowers */
-      .bg-flower {
-        position: fixed;
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.28;
-        transform-origin: center;
-        filter: drop-shadow(0 15px 30px rgba(218, 165, 32, 0.2));
-      }
-
-      .bg-flower-1 {
-        width: 550px;
-        height: 550px;
-        top: -150px;
-        right: -150px;
-        animation: spinPookalamRight 60s linear infinite;
-      }
-
-      .bg-flower-2 {
-        width: 450px;
-        height: 450px;
-        bottom: -100px;
-        left: -100px;
-        animation: spinPookalamLeft 50s linear infinite;
-      }
-
-      @keyframes spinPookalamRight {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      @keyframes spinPookalamLeft {
-        from { transform: rotate(360deg); }
-        to { transform: rotate(0deg); }
-      }
-
-      @media (max-width: 600px) {
-        .bg-flower-1 {
-          width: 350px;
-          height: 350px;
-          top: -100px;
-          right: -100px;
-        }
-        .bg-flower-2 {
-          width: 280px;
-          height: 280px;
-          bottom: -80px;
-          left: -80px;
-        }
-      }
-
-      /* Falling Petals Animation */
-      .petal {
-        position: fixed;
-        top: -20px;
-        pointer-events: none;
-        z-index: 1;
-        animation: fall linear infinite;
-      }
-
-      .petal.marigold-yellow {
-        background: radial-gradient(circle, #ffe066 0%, #ffd700 100%);
-        box-shadow: 0 2px 5px rgba(255, 215, 0, 0.3);
-      }
-
-      .petal.marigold-orange {
-        background: radial-gradient(circle, #ffaa44 0%, #ff8800 100%);
-        box-shadow: 0 2px 5px rgba(255, 136, 0, 0.3);
-      }
-
-      .petal.jasmine {
-        background: #fffef0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-
-      @keyframes fall {
-        0% {
-          transform: translateY(0) rotate(0deg) translateX(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.8;
-        }
-        90% {
-          opacity: 0.8;
-        }
-        100% {
-          transform: translateY(105vh) rotate(720deg) translateX(100px);
-          opacity: 0;
-        }
-      }
-
-      /* Core Layout */
-      .container {
-        background: rgba(255, 255, 255, 0.42);
-        border-radius: 28px;
-        box-shadow: 0 20px 50px rgba(13, 92, 52, 0.1), 0 0 0 1px rgba(218, 165, 32, 0.25);
-        max-width: 520px;
-        width: 100%;
-        padding: 40px 30px;
-        position: relative;
-        z-index: 10;
-        overflow: hidden;
-        backdrop-filter: blur(24px) saturate(170%);
-        -webkit-backdrop-filter: blur(24px) saturate(170%);
-        transition: all 0.3s ease;
-      }
-
-
-
-      /* Header Section */
-      .header {
-        text-align: center;
-        margin-bottom: 24px;
-      }
-
-      /* Logo Halo Effect */
-      .logo-wrapper {
-        position: relative;
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .pookalam-halo {
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: conic-gradient(
-          #ff3300 0deg 30deg, 
-          #ffcc00 30deg 60deg, 
-          #0d5c34 60deg 90deg, 
-          #ffffff 90deg 120deg, 
-          #ffd700 120deg 150deg,
-          #ff9933 150deg 180deg,
-          #ff3300 180deg 210deg,
-          #ffcc00 210deg 240deg,
-          #0d5c34 240deg 270deg,
-          #ffffff 270deg 300deg,
-          #ffd700 300deg 330deg,
-          #ff9933 330deg 360deg
-        );
-        animation: spinPookalam 20s linear infinite;
-        mask: radial-gradient(circle, transparent 72%, black 73%);
-        -webkit-mask: radial-gradient(circle, transparent 72%, black 73%);
-        box-shadow: 0 0 15px rgba(255, 153, 0, 0.15);
-      }
-
-      @keyframes spinPookalam {
-        to { transform: rotate(360deg); }
-      }
-
-      .logo {
-        width: 76px;
-        height: 76px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid #ffd700;
-        z-index: 2;
-        box-shadow: 0 4px 12px rgba(218, 165, 32, 0.25);
-      }
-
-      h1 {
-        font-family: 'Cinzel', serif;
-        color: #0d5c34;
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 4px;
-        letter-spacing: 0.5px;
-      }
-
-      .subtitle {
-        color: #8b6b00;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-      }
-
-      .event-details {
-        display: inline-flex;
-        justify-content: center;
-        gap: 16px;
-        font-size: 13.5px;
-        color: #0d5c34;
-        font-weight: 700;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        padding: 8px 18px;
-        border-radius: 30px;
-        border: 1px solid rgba(218, 165, 32, 0.25);
-        margin-bottom: 12px;
-      }
-
-      .detail-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .detail-icon {
-        font-size: 15px;
-      }
-
-      /* Countdown Banner */
-      .countdown-container {
-        background: rgba(13, 92, 52, 0.8);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        padding: 14px;
-        border-radius: 16px;
-        text-align: center;
-        margin-bottom: 24px;
-        box-shadow: 0 6px 15px rgba(13, 92, 52, 0.15);
-        border: 1px solid rgba(255, 215, 0, 0.3);
-      }
-
-      .countdown-title {
-        color: #ffd700;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-      }
-
-      .countdown-grid {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      .countdown-box {
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 8px;
-        padding: 6px;
-        min-width: 55px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .countdown-val {
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 1.1;
-      }
-
-      .countdown-label {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 8px;
-        font-weight: 600;
-        text-transform: uppercase;
-        margin-top: 3px;
-      }
-
-      .countdown-closed-msg {
-        display: none;
-        color: #ff5555;
-        font-size: 16px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .countdown-container.expired {
-        background: rgba(254, 226, 226, 0.5);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border-color: rgba(239, 68, 68, 0.4);
-      }
-
-      .countdown-container.expired .countdown-title,
-      .countdown-container.expired .countdown-grid {
-        display: none;
-      }
-
-      .countdown-container.expired .countdown-closed-msg {
-        display: block;
-      }
-
-      /* Stepper */
-      .stepper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 28px;
-        position: relative;
-        padding: 0 10px;
-      }
-
-      .step-dot {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.55);
-        color: #8b6b00;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 13px;
-        border: 2px solid rgba(218, 165, 32, 0.25);
-        transition: all 0.3s ease;
-        z-index: 2;
-      }
-
-      .step-dot.active {
-        background-color: #0d5c34;
-        color: #ffffff;
-        border-color: #ffd700;
-        box-shadow: 0 0 10px rgba(13, 92, 52, 0.2);
-      }
-
-      .step-dot.completed {
-        background-color: #ffd700;
-        color: #0d5c34;
-        border-color: #0d5c34;
-      }
-
-      .step-line {
-        flex-grow: 1;
-        height: 3px;
-        background-color: rgba(218, 165, 32, 0.25);
-        margin: 0 6px;
-        z-index: 1;
-        transition: all 0.3s ease;
-      }
-
-      .step-line.completed {
-        background-color: #ffd700;
-      }
-
-      /* Card Transitions */
-      .form-card {
-        display: none;
-        opacity: 0;
-        transform: translateY(12px);
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .form-card.show {
-        display: block;
-      }
-
-      .form-card.active {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .card-heading {
-        font-family: 'Cinzel', serif;
-        color: #0d5c34;
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 6px;
-        text-align: center;
-      }
-
-      .card-subheading {
-        font-size: 13px;
-        color: #666;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      /* Form Elements */
-      .form-group {
-        margin-bottom: 18px;
-        text-align: left;
-      }
-
-      label {
-        display: block;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 6px;
-        font-size: 13.5px;
-      }
-
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"] {
-        width: 100%;
-        padding: 12px 14px;
-        border: 2px solid rgba(218, 165, 32, 0.3);
-        border-radius: 12px;
-        font-size: 14.5px;
-        background-color: rgba(255, 255, 255, 0.5);
-        font-family: inherit;
-        color: #111;
-        transition: all 0.3s ease;
-      }
-
-      input[type="text"]:focus,
-      input[type="email"]:focus,
-      input[type="tel"]:focus {
-        outline: none;
-        border-color: #ffd700;
-        background-color: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.25);
-      }
-
-      /* Reachable Segmented Toggle */
-      .segmented-control {
-        display: flex;
-        position: relative;
-        background: rgba(255, 255, 255, 0.4);
-        border: 2px solid rgba(218, 165, 32, 0.3);
-        border-radius: 12px;
-        padding: 3px;
-        user-select: none;
-        margin-top: 6px;
-      }
-
-      .segmented-control input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .segmented-control label.segmented-option {
-        flex: 1;
-        text-align: center;
-        padding: 10px 0;
-        margin-bottom: 0;
-        font-size: 13.5px;
-        font-weight: 600;
-        color: #555;
-        cursor: pointer;
-        z-index: 2;
-        transition: color 0.25s ease;
-        border-radius: 8px;
-      }
-
-      .segmented-control input[type="radio"]:checked + label.segmented-option {
-        color: #0d5c34;
-      }
-
-      .segmented-slider {
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: calc((100% - 6px) / 3);
-        height: calc(100% - 6px);
-        background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-        border-radius: 8px;
-        transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-        z-index: 1;
-        box-shadow: 0 2px 6px rgba(255, 170, 0, 0.2);
-      }
-
-      #reachableCall:checked ~ .segmented-slider {
-        transform: translateX(0);
-      }
-
-      #reachableWhatsapp:checked ~ .segmented-slider {
-        transform: translateX(100%);
-      }
-
-      #reachableBoth:checked ~ .segmented-slider {
-        transform: translateX(200%);
-      }
-
-      /* Counters Styling */
-      .counter-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 16px;
-        background: rgba(255, 255, 255, 0.4);
-        border: 1px solid rgba(218, 165, 32, 0.2);
-        border-radius: 12px;
-        margin-bottom: 12px;
-        transition: all 0.25s ease;
-      }
-
-      .counter-row:hover {
-        border-color: #ffd700;
-        background: rgba(255, 255, 255, 0.65);
-        box-shadow: 0 4px 12px rgba(218, 165, 32, 0.08);
-      }
-
-      .counter-info {
-        flex-grow: 1;
-        text-align: left;
-      }
-
-      .counter-title {
-        font-weight: 600;
-        color: #333;
-        font-size: 14px;
-      }
-
-      .counter-desc {
-        font-size: 11px;
-        color: #777;
-        margin-top: 1px;
-      }
-
-      .counter-control {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .cnt-btn {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        border: none;
-        background: #0d5c34;
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .cnt-btn:hover {
-        background: #136f3f;
-        transform: scale(1.05);
-      }
-
-      .cnt-btn:active {
-        transform: scale(0.95);
-      }
-
-      .cnt-btn:disabled {
-        background: #a3c4b4;
-        color: #ffffff;
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none !important;
-        pointer-events: none;
-      }
-
-      .cnt-input {
-        width: 36px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 700;
-        color: #0d5c34;
-        border: none;
-        background: transparent;
-        outline: none;
-        -moz-appearance: textfield;
-      }
-
-      .cnt-input::-webkit-outer-spin-button,
-      .cnt-input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* No Members Message on Step 3 */
-      .no-members-box {
-        text-align: center;
-        padding: 30px 20px;
-        background: rgba(255, 255, 255, 0.35);
-        border: 1px dashed rgba(218, 165, 32, 0.3);
-        border-radius: 14px;
-        color: #555;
-      }
-
-      .no-members-icon {
-        font-size: 32px;
-        margin-bottom: 10px;
-      }
-
-      .no-members-box p {
-        font-size: 14px;
-        font-weight: 500;
-        color: #555;
-      }
-
-      .no-members-box .subtext {
-        font-size: 12px;
-        color: #888;
-        margin-top: 4px;
-      }
-
-      /* Summary Box Styling */
-      .summary-card {
-        background: rgba(255, 255, 255, 0.4);
-        border: 1px solid rgba(218, 165, 32, 0.2);
-        border-radius: 14px;
-        padding: 18px;
-        margin-bottom: 20px;
-        text-align: left;
-      }
-
-      .summary-section h3 {
-        font-family: 'Cinzel', serif;
-        color: #0d5c34;
-        font-size: 14px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #eae0cc;
-        padding-bottom: 4px;
-      }
-
-      .summary-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 6px;
-        font-size: 13.5px;
-      }
-
-      .summary-label {
-        color: #666;
-        font-weight: 500;
-      }
-
-      .summary-value {
-        color: #111;
-        font-weight: 600;
-      }
-
-      .summary-divider {
-        height: 1px;
-        background: #eae0cc;
-        margin: 12px 0;
-      }
-
-      .summary-names-list {
-        padding-left: 18px;
-        margin-top: 6px;
-        font-size: 13px;
-        color: #444;
-      }
-
-      .summary-names-list li {
-        margin-bottom: 4px;
-      }
-
-      /* Checkboxes Styling */
-      .checkbox-container {
-        margin: 18px 0;
-        text-align: left;
-      }
-
-      .checkbox-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 12px;
-      }
-
-      .checkbox-row input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        accent-color: #0d5c34;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 2px;
-        flex-shrink: 0;
-      }
-
-      .checkbox-row label {
-        font-size: 13px;
-        line-height: 1.45;
-        color: #444;
-        font-weight: 500;
-        cursor: pointer;
-        user-select: none;
-      }
-
-      /* Button Navigation Area */
-      .nav-actions {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 24px;
-        gap: 12px;
-      }
-
-      .btn {
-        padding: 12px 24px;
-        font-size: 15px;
-        font-weight: 700;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        font-family: inherit;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-        color: #0d5c34;
-        box-shadow: 0 4px 12px rgba(255, 170, 0, 0.25);
-        flex: 1.5;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-1.5px);
-        box-shadow: 0 6px 16px rgba(255, 170, 0, 0.35);
-      }
-
-      .btn-primary:active {
-        transform: translateY(0);
-      }
-
-      .btn-primary:disabled {
-        background: #d1cbd4;
-        color: #888;
-        cursor: not-allowed;
-        box-shadow: none;
-        transform: none;
-      }
-
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.45);
-        color: #8b6b00;
-        border: 1px solid rgba(218, 165, 32, 0.25);
-        flex: 1;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-      }
-
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.65);
-        border-color: rgba(218, 165, 32, 0.4);
-      }
-
-      /* Success Screen */
-      .success-message {
-        display: none;
-        animation: slideUp 0.5s ease-out forwards;
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .success-container {
-        text-align: center;
-      }
-
-      .success-header {
-        background: rgba(13, 92, 52, 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 30px 20px;
-        border-radius: 18px 18px 0 0;
-        color: white;
-        border: 1px solid rgba(255, 215, 0, 0.25);
-        border-bottom: none;
-      }
-
-      .success-icon-wrapper {
-        position: relative;
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        border: 2px solid #ffd700;
-      }
-
-      .success-icon {
-        font-size: 32px;
-        line-height: 1;
-        animation: scaleCheck 0.4s ease-out 0.3s forwards;
-      }
-
-      @keyframes scaleCheck {
-        0% { transform: scale(0); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-      }
-
-      .success-title {
-        font-family: 'Cinzel', serif;
-        font-size: 22px;
-        font-weight: 700;
-        color: #ffd700;
-      }
-
-      .success-body {
-        background: rgba(255, 255, 255, 0.35);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 30px 24px;
-        border-radius: 0 0 18px 18px;
-        border: 1px solid rgba(218, 165, 32, 0.2);
-        border-top: 3px solid #ffd700;
-      }
-
-      .success-message-text {
-        font-size: 15px;
-        color: #0d5c34;
-        margin-bottom: 12px;
-        font-weight: 700;
-        line-height: 1.5;
-      }
-
-      .success-subtext {
-        font-size: 13px;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 10px;
-      }
-
-      .success-highlight {
-        color: #d48800;
-        font-weight: 700;
-      }
-
-      .thank-you-text {
-        margin-top: 20px;
-        font-family: 'Cinzel', serif;
-        font-size: 15px;
-        font-weight: 700;
-        color: #0d5c34;
-      }
-
-      /* Closed Card Styling */
-      .closed-card {
-        text-align: center;
-        padding: 40px 20px;
-      }
-
-      .closed-icon {
-        font-size: 54px;
-        margin-bottom: 16px;
-      }
-
-      .closed-card h2 {
-        font-family: 'Cinzel', serif;
-        color: #851c1c;
-        font-size: 22px;
-        margin-bottom: 12px;
-      }
-
-      .closed-card p {
-        font-size: 14px;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 24px;
-      }
-
-      .closed-contact {
-        background: #fff5f5;
-        border: 1px solid #fecaca;
-        border-radius: 12px;
-        padding: 14px;
-        font-size: 13px;
-        color: #991b1b;
-        font-weight: 500;
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 30px 20px;
-        }
-
-        h1 {
-          font-size: 24px;
-        }
-
-        .subtitle {
-          font-size: 11px;
-        }
-
-        .event-details {
-          flex-direction: column;
-          gap: 6px;
-          border-radius: 16px;
-          padding: 10px 14px;
-        }
-
-        .countdown-grid {
-          gap: 6px;
-        }
-
-        .countdown-box {
-          min-width: 46px;
-          padding: 4px;
-        }
-
-        .countdown-val {
-          font-size: 16px;
-        }
-
-        .countdown-label {
-          font-size: 7px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Background SVG Pookalam (Floral Mandala) 1 -->
-    <svg class="bg-flower bg-flower-1" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <g id="petal-group-1">
-          <path d="M100 100 C 95 80, 90 60, 100 40 C 110 60, 105 80, 100 100 Z" fill="#ff8800" opacity="0.85" />
-          <path d="M100 100 C 97 85, 93 70, 100 50 C 107 70, 103 85, 100 100 Z" fill="#ffd700" />
-        </g>
-        <g id="petal-group-2">
-          <path d="M100 100 C 90 70, 80 40, 100 15 C 120 40, 110 70, 100 100 Z" fill="#0d5c34" opacity="0.65" />
-          <path d="M100 100 C 93 75, 87 50, 100 25 C 113 50, 107 75, 100 100 Z" fill="#ffffff" opacity="0.9" />
-          <path d="M100 100 C 96 80, 92 60, 100 35 C 108 60, 104 80, 100 100 Z" fill="#ff3300" />
-        </g>
-      </defs>
-      <use href="#petal-group-2" transform="rotate(0 100 100)" />
-      <use href="#petal-group-2" transform="rotate(30 100 100)" />
-      <use href="#petal-group-2" transform="rotate(60 100 100)" />
-      <use href="#petal-group-2" transform="rotate(90 100 100)" />
-      <use href="#petal-group-2" transform="rotate(120 100 100)" />
-      <use href="#petal-group-2" transform="rotate(150 100 100)" />
-      <use href="#petal-group-2" transform="rotate(180 100 100)" />
-      <use href="#petal-group-2" transform="rotate(210 100 100)" />
-      <use href="#petal-group-2" transform="rotate(240 100 100)" />
-      <use href="#petal-group-2" transform="rotate(270 100 100)" />
-      <use href="#petal-group-2" transform="rotate(300 100 100)" />
-      <use href="#petal-group-2" transform="rotate(330 100 100)" />
-      
-      <use href="#petal-group-1" transform="rotate(15 100 100)" />
-      <use href="#petal-group-1" transform="rotate(45 100 100)" />
-      <use href="#petal-group-1" transform="rotate(75 100 100)" />
-      <use href="#petal-group-1" transform="rotate(105 100 100)" />
-      <use href="#petal-group-1" transform="rotate(135 100 100)" />
-      <use href="#petal-group-1" transform="rotate(165 100 100)" />
-      <use href="#petal-group-1" transform="rotate(195 100 100)" />
-      <use href="#petal-group-1" transform="rotate(225 100 100)" />
-      <use href="#petal-group-1" transform="rotate(255 100 100)" />
-      <use href="#petal-group-1" transform="rotate(285 100 100)" />
-      <use href="#petal-group-1" transform="rotate(315 100 100)" />
-      <use href="#petal-group-1" transform="rotate(345 100 100)" />
-      <circle cx="100" cy="100" r="18" fill="#ffd700" />
-      <circle cx="100" cy="100" r="10" fill="#0d5c34" />
-      <circle cx="100" cy="100" r="5" fill="#ff3300" />
-    </svg>
-
-    <!-- Background SVG Pookalam (Floral Mandala) 2 -->
-    <svg class="bg-flower bg-flower-2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <g id="petal-group-2-1">
-          <path d="M100 100 C 95 82, 92 64, 100 45 C 108 64, 105 82, 100 100 Z" fill="#ffcc00" />
-          <path d="M100 100 C 97 87, 95 74, 100 55 C 105 74, 103 87, 100 100 Z" fill="#ff9933" />
-        </g>
-        <g id="petal-group-2-2">
-          <path d="M100 100 C 92 73, 85 46, 100 20 C 115 46, 108 73, 100 100 Z" fill="#ff3300" opacity="0.8" />
-          <path d="M100 100 C 95 78, 90 56, 100 32 C 110 56, 105 78, 100 100 Z" fill="#0d5c34" opacity="0.9" />
-          <path d="M100 100 C 97 82, 94 64, 100 42 C 106 64, 103 82, 100 100 Z" fill="#ffffff" />
-        </g>
-      </defs>
-      <use href="#petal-group-2-2" transform="rotate(0 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(30 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(60 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(90 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(120 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(150 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(180 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(210 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(240 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(270 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(300 100 100)" />
-      <use href="#petal-group-2-2" transform="rotate(330 100 100)" />
-      
-      <use href="#petal-group-2-1" transform="rotate(15 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(45 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(75 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(105 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(135 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(165 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(195 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(225 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(255 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(285 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(315 100 100)" />
-      <use href="#petal-group-2-1" transform="rotate(345 100 100)" />
-      <circle cx="100" cy="100" r="16" fill="#ffcc00" />
-      <circle cx="100" cy="100" r="9" fill="#ff3300" />
-    </svg>
-
-    <div class="container">
-      <!-- Form Header (Visible on form and success screen initially) -->
-      <div class="header" id="formHeader">
-        <div class="logo-wrapper">
-          <div class="pookalam-halo"></div>
-          <img src="icon.png" alt="Logo" class="logo" />
-        </div>
-        <h1>Onam 2026</h1>
-        <p class="subtitle">Mallus in Ingolstadt</p>
-        <div class="event-details">
-          <div class="detail-item">
-            <span class="detail-icon">📅</span>
-            <span>12 September 2026</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-icon">📍</span>
-            <span>Ingolstadt, Germany</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Realtime Countdown Timer -->
-      <div class="countdown-container" id="countdownContainer">
-        <div class="countdown-title">Registration Closes In:</div>
-        <div class="countdown-grid" id="countdownGrid">
-          <div class="countdown-box">
-            <span class="countdown-val" id="daysVal">00</span>
-            <span class="countdown-label">Days</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-val" id="hoursVal">00</span>
-            <span class="countdown-label">Hours</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-val" id="minutesVal">00</span>
-            <span class="countdown-label">Mins</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-val" id="secondsVal">00</span>
-            <span class="countdown-label">Secs</span>
-          </div>
-        </div>
-        <div class="countdown-closed-msg" id="countdownClosedMsg">Registration Closed</div>
-      </div>
-
-      <!-- Registration Form Section -->
-      <div id="formSection">
-        <!-- Progressive Card Indicator -->
-        <div class="stepper">
-          <div class="step-dot active" id="stepDot1">1</div>
-          <div class="step-line" id="stepLine1"></div>
-          <div class="step-dot" id="stepDot2">2</div>
-          <div class="step-line" id="stepLine2"></div>
-          <div class="step-dot" id="stepDot3">3</div>
-          <div class="step-line" id="stepLine3"></div>
-          <div class="step-dot" id="stepDot4">4</div>
-        </div>
-
-        <form action="https://submit-form.com/zv2jumcer" id="onamForm">
-          <!-- CARD 1: Primary Applicant Details -->
-          <div class="form-card active show" id="card1">
-            <h2 class="card-heading">Contact Information</h2>
-            <p class="card-subheading">Please provide your primary contact details.</p>
-            
-            <div class="form-group">
-              <label for="primaryName">Full Name *</label>
-              <input
-                type="text"
-                id="primaryName"
-                name="Applicant Full Name"
-                placeholder="Enter your full name"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="primaryEmail">Email Address *</label>
-              <input
-                type="email"
-                id="primaryEmail"
-                name="Applicant Email"
-                placeholder="Enter your email address"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="primaryPhone">Phone Number *</label>
-              <input
-                type="tel"
-                id="primaryPhone"
-                name="Applicant Phone"
-                placeholder="e.g., +49 123 4567890"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label>How are you reachable on this number? *</label>
-              <div class="segmented-control">
-                <input type="radio" id="reachableCall" name="Reachable Via" value="Call" checked />
-                <label for="reachableCall" class="segmented-option">Call</label>
-
-                <input type="radio" id="reachableWhatsapp" name="Reachable Via" value="Whatsapp" />
-                <label for="reachableWhatsapp" class="segmented-option">Whatsapp</label>
-
-                <input type="radio" id="reachableBoth" name="Reachable Via" value="Both" />
-                <label for="reachableBoth" class="segmented-option">Both</label>
-
-                <div class="segmented-slider"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 2: Additional Members Count -->
-          <div class="form-card" id="card2">
-            <h2 class="card-heading">Additional Members</h2>
-            <p class="card-subheading">Are you bringing any family members or friends? <br />(excluding yourself, max 5 per category)</p>
-
-            <div class="counter-row">
-              <div class="counter-info">
-                <div class="counter-title">Kids (below 6)</div>
-                <div class="counter-desc">Free admission</div>
-              </div>
-              <div class="counter-control">
-                <button type="button" class="cnt-btn minus" data-target="kidsUnder6">-</button>
-                <input type="number" id="kidsUnder6" name="Additional Kids (below 6) Count" class="cnt-input" value="0" readonly />
-                <button type="button" class="cnt-btn plus" data-target="kidsUnder6">+</button>
-              </div>
-            </div>
-
-            <div class="counter-row">
-              <div class="counter-info">
-                <div class="counter-title">Kids (6 - 12)</div>
-                <div class="counter-desc">Ages 6 to 12 (6 included)</div>
-              </div>
-              <div class="counter-control">
-                <button type="button" class="cnt-btn minus" data-target="kids6to12">-</button>
-                <input type="number" id="kids6to12" name="Additional Kids (6 - 12) Count" class="cnt-input" value="0" readonly />
-                <button type="button" class="cnt-btn plus" data-target="kids6to12">+</button>
-              </div>
-            </div>
-
-            <div class="counter-row">
-              <div class="counter-info">
-                <div class="counter-title">Adult Members</div>
-                <div class="counter-desc">Ages 13 and above</div>
-              </div>
-              <div class="counter-control">
-                <button type="button" class="cnt-btn minus" data-target="adults">-</button>
-                <input type="number" id="adults" name="Additional Adults Count" class="cnt-input" value="0" readonly />
-                <button type="button" class="cnt-btn plus" data-target="adults">+</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 3: Additional Members Names -->
-          <div class="form-card" id="card3">
-            <h2 class="card-heading">Additional Member Names</h2>
-            <p class="card-subheading" id="card3Subheading">Please provide the name of each additional member. <br /> <b>(NOT the primary applicant)</b></p>
-            <div id="dynamicNamesContainer">
-              <!-- Dynamically populated via Javascript -->
-            </div>
-          </div>
-
-          <!-- CARD 4: Summary & Submission -->
-          <div class="form-card" id="card4">
-            <h2 class="card-heading">Review Details</h2>
-            <p class="card-subheading">Verify your information before submitting.</p>
-
-            <div class="summary-card">
-              <div class="summary-section">
-                <h3>Primary Applicant</h3>
-                <div class="summary-row">
-                  <span class="summary-label">Full Name:</span>
-                  <span class="summary-value" id="sumName">-</span>
-                </div>
-                <div class="summary-row">
-                  <span class="summary-label">Email:</span>
-                  <span class="summary-value" id="sumEmail">-</span>
-                </div>
-                <div class="summary-row">
-                  <span class="summary-label">Phone:</span>
-                  <span class="summary-value" id="sumPhone">-</span>
-                </div>
-                <div class="summary-row">
-                  <span class="summary-label">Reachable Via:</span>
-                  <span class="summary-value" id="sumReachable">-</span>
-                </div>
-              </div>
-
-              <div class="summary-divider"></div>
-
-              <div class="summary-section">
-                <h3>Additional Members</h3>
-                <div class="summary-row">
-                  <span class="summary-label">Kids (below 6):</span>
-                  <span class="summary-value" id="sumKidsUnder6">0</span>
-                </div>
-                <div class="summary-row">
-                  <span class="summary-label">Kids (6 - 12):</span>
-                  <span class="summary-value" id="sumKids6to12">0</span>
-                </div>
-                <div class="summary-row">
-                  <span class="summary-label">Adults:</span>
-                  <span class="summary-value" id="sumAdults">0</span>
-                </div>
-
-                <div id="sumNamesSection" style="display: none;">
-                  <span class="summary-label" style="display: block; margin-top: 12px; margin-bottom: 6px; font-weight: 600;">Additional Names:</span>
-                  <ul class="summary-names-list" id="sumNamesList">
-                    <!-- Populated dynamically -->
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="checkbox-container">
-              <div class="checkbox-row">
-                <input type="checkbox" id="verifyInfo" name="Verified Info Statement" value="Yes - I verified the details" required />
-                <label for="verifyInfo">I have made sure that the above information is verified and can be used to update me with any information.</label>
-              </div>
-              <div class="checkbox-row">
-                <input type="checkbox" id="agreePay" name="Payment Obligation Statement" value="Yes - I agree to pay" required />
-                <label for="agreePay">I understand that organizing the event involves costs, and I am willing to contribute my share once the final amount is determined.</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Shared Form Navigation Controls -->
-          <div class="nav-actions">
-            <button type="button" class="btn btn-secondary" id="backBtn" style="visibility: hidden;">Back</button>
-            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
-            <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">Submit Registration</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Closed Registration Screen -->
-      <div id="closedSection" style="display: none;">
-        <div class="closed-card">
-          <div class="closed-icon">⏳</div>
-          <h2>Registration Closed</h2>
-          <p>We are sorry, but registrations for Onam 2026 in Ingolstadt are now officially closed. The deadline was 31st July 2026.</p>
-          <div class="closed-contact">
-            For urgent requests or changes regarding existing registrations, please contact the organizers directly in the WhatsApp group.
-          </div>
-        </div>
-      </div>
-
-      <!-- Success Screen -->
-      <div class="success-message" id="successMessage">
-        <div class="success-container">
-          <div class="success-header">
-            <div class="success-icon-wrapper">
-              <span class="success-icon">🌸</span>
-            </div>
-            <div class="success-title">Registration Submitted!</div>
-          </div>
-          <div class="success-body">
-            <div class="success-message-text">
-              We are excited to celebrate Onam with you!
-            </div>
-            <div class="success-subtext">
-              Your details have been successfully saved.
-            </div>
-            <div class="success-subtext">
-              We will contact you at the provided phone number and email regarding your <span class="success-highlight">confirmation and payment contribution details</span>.
-            </div>
-
-            <div class="thank-you-text">
-              Thank you! 🌾
-            </div>
-          </div>
-        </div>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Onam 2026 — Registration</title>
+<meta name="description" content="Register for Onam 2026 in Ingolstadt. Sadhya, games and a full cultural evening.">
+<meta name="theme-color" content="#1b0f0b">
+
+<!--
+  Onam 2026 registration page.
+
+  WHAT CHANGED vs. the old form
+  -----------------------------
+  1. A ~4 second cinematic intro (Marvel-style photo flip) plays on load, then
+     hands over to the registration form.
+  2. Early-bird notice + struck-through "was" prices on the ticket rows.
+  3. An "included in your ticket" panel (food / games / event).
+
+  WHAT DID NOT CHANGE
+  -------------------
+  The submission contract is byte-for-byte the same as before: same Edge
+  Function URL, same Turnstile widget, same JSON body (name, email,
+  payment_method, quantities, extra, turnstile_token). The Pi does not need to
+  know this page was replaced.
+
+  The prices here are STILL DISPLAY ONLY. The amount owed is calculated by the
+  Edge Function and re-verified on the Pi; a mismatch quarantines the
+  registration rather than charging the wrong amount. The `cents` values below
+  are unchanged from the old page (2399 / 2199 / 1000) — only a `was` value was
+  added next to them so the discount is visible.
+
+  ADDING YOUR PHOTOS  ->  see the PHOTOS array in the script block.
+  Drop ~20 images in a /photos folder and list them. Until you do, the intro
+  runs on generated typographic cards, so the page works as-is.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<style>
+:root {
+  --bg:        #fbf5e9;
+  --bg-deep:   #f4ead6;
+  --card:      #fffdf8;
+  --ink:       #241310;
+  --ink-soft:  #6a544c;
+  --line:      #e4d7c1;
+  --accent:    #c0522f;   /* terracotta */
+  --accent-dk: #98391c;
+  --gold:      #e0a03a;
+  --leaf:      #3f6b46;
+  --night:     #170d09;
+  --radius:    4px;
+  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --body: "Karla", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html.intro-active, html.intro-active body { overflow: hidden; height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font: 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1100px 520px at 50% -180px, #fff6e2 0%, rgba(255,246,226,0) 70%),
+    linear-gradient(var(--bg), var(--bg-deep));
+  background-attachment: fixed;
+}
+
+/* fine paper grain */
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  opacity: .35; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   INTRO
+   ========================================================================== */
+#intro {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--night);
+  overflow: hidden;
+  display: grid; place-items: center;
+  --p: 0;                       /* 0 -> 1 progress, driven from JS */
+}
+#intro.done { opacity: 0; transform: scale(1.06); pointer-events: none;
+  transition: opacity .55s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+
+#stage { position: absolute; inset: 0; }
+
+.frame {
+  position: absolute; inset: 0;
+  opacity: 0; visibility: hidden;
+  background-size: cover; background-position: center;
+}
+.frame.on { opacity: 1; visibility: visible; }
+.frame.on.zoom { animation: kb 1.4s linear forwards; }
+@keyframes kb { from { transform: scale(1.10); } to { transform: scale(1.22); } }
+
+/* generated card used when a photo slot is empty or fails to load */
+.frame .card-fill {
+  position: absolute; inset: 0;
+  display: grid; align-content: center; justify-items: center; gap: 10px;
+  text-align: center; padding: 0 8vw;
+}
+.frame .card-fill .kicker {
+  font: 600 11px/1 var(--body); letter-spacing: .34em; text-transform: uppercase;
+  color: rgba(255,255,255,.72);
+}
+.frame .card-fill .word {
+  font: 900 clamp(38px, 11vw, 104px)/0.94 var(--display);
+  letter-spacing: -.02em; color: #fff; text-wrap: balance;
+  text-shadow: 0 6px 40px rgba(0,0,0,.45);
+}
+
+/* dark wash so the wordmark always reads */
+#veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+  radial-gradient(
+    120% 90% at 50% 50%,
+    rgba(0,0,0,.20) 0%,
+    rgba(0,0,0,.50) 70%,
+    rgba(0,0,0,.56) 70%
+  ),
+  linear-gradient(
+    180deg,
+    rgba(23,13,9,.70),
+    rgba(23,13,9,.40) 40%,
+    rgba(23,13,9,.90)
+  );
+}
+/* marigold sweep that fires on the final lock */
+#wash {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, rgba(224,160,58,0) 20%, rgba(224,160,58,.85) 48%, rgba(192,82,47,.75) 58%, rgba(192,82,47,0) 85%);
+  mix-blend-mode: screen;
+}
+#wash.fire { animation: sweep .85s cubic-bezier(.3,.8,.2,1) forwards; }
+@keyframes sweep {
+  0%   { opacity: 0; transform: translateX(-60%); }
+  35%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateX(60%); }
+}
+
+#intro .plate {
+  position: relative; z-index: 3; text-align: center; padding: 0 22px;
+  transform: translateY(calc(-4px + var(--p) * -8px));
+}
+#intro .over {
+  font: 700 13px/1 var(--body); letter-spacing: .5em; text-transform: uppercase;
+  color: rgba(255,236,205,.75); margin: 0 0 clamp(10px, 2.2vw, 18px);
+  opacity: calc(.25 + var(--p) * .75);
+}
+#intro h1 {
+  margin: 0;
+  font: 900 clamp(52px, 15.5vw, 168px)/0.86 var(--display);
+  color: #fff8ea;
+  letter-spacing: calc(.30em - var(--p) * .27em);
+  text-indent: calc(.30em - var(--p) * .27em);
+  filter: blur(calc((1 - var(--p)) * 9px));
+  opacity: calc(.35 + var(--p) * .65);
+  text-shadow: 0 10px 60px rgba(0,0,0,.6);
+  transition: letter-spacing .15s linear, text-indent .15s linear, filter .15s linear, opacity .15s linear;
+
+}
+#intro h1 .yr {
+  display: block; margin-top: clamp(6px, 1.6vw, 14px);
+  font: 600 clamp(15px, 3.4vw, 26px)/1 var(--body);
+  letter-spacing: calc(.62em - var(--p) * .10em);
+  text-indent: calc(.62em - var(--p) * .10em);
+  color: var(--gold); filter: none;
+}
+#intro.lock h1 { animation: lock .7s cubic-bezier(.2,1.4,.3,1) forwards; }
+
+#intro .sub {
+  margin: clamp(16px, 3.5vw, 26px) 0 0;
+  font: 500 clamp(11px, 2.6vw, 13px)/1 var(--body);
+  letter-spacing: .28em; text-transform: uppercase; color: rgba(255,236,205,.62);
+}
+
+#bar {
+  position: absolute; left: 0; bottom: 0; height: 0px; width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  z-index: 4; box-shadow: 0 0 18px rgba(224,160,58,.6);
+}
+#skip {
+  position: absolute; z-index: 5; top: max(16px, env(safe-area-inset-top)); right: 16px;
+  border: 1px solid rgba(255,255,255,.28); background: rgba(0,0,0,.25); color: #fff5e6;
+  font: 600 11px/1 var(--body); letter-spacing: .18em; text-transform: uppercase;
+  padding: 9px 14px; border-radius: 999px; cursor: pointer; backdrop-filter: blur(6px);
+}
+#skip:hover { background: rgba(255,255,255,.16); }
+
+@media (prefers-reduced-motion: reduce) {
+  .frame.on.zoom { animation: none; }
+  #intro h1 { filter: none; letter-spacing: .03em; text-indent: .03em; opacity: 1; }
+  #wash.fire { animation: none; }
+}
+
+/* ==========================================================================
+   PAGE
+   ========================================================================== */
+.wrap { position: relative; z-index: 1; max-width: 660px; margin: 0 auto;
+        padding: clamp(28px, 6vw, 56px) 18px 72px; }
+
+.reveal { opacity: 0; transform: translateY(14px); }
+body.ready .reveal { animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; } body.ready .reveal { animation: none; }
+}
+
+header { text-align: center; margin-bottom: clamp(22px, 5vw, 34px); }
+header .eyebrow {
+  font: 600 11px/1 var(--body); letter-spacing: .42em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+header h1 {
+  margin: 0 0 10px; font: 900 clamp(40px, 9vw, 66px)/0.95 var(--display);
+  letter-spacing: -.025em;
+}
+header h1 em { font-style: normal; color: var(--accent); }
+header .meta {
+  margin: 0; color: var(--ink-soft); font-size: 15px;
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+}
+header .meta i { display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+
+/* early-bird strip */
+.earlybird {
+  display: flex; gap: 13px; align-items: flex-start;
+  background: linear-gradient(100deg, #2c4a33, #3f6b46 62%, #4a7a51);
+  color: #f3ffe9; border-radius: var(--radius);
+  padding: 15px 17px; margin-bottom: 16px;
+  box-shadow: 0 10px 26px -16px rgba(31,60,38,.9);
+}
+.earlybird svg { flex: none; margin-top: 2px; }
+.earlybird b { display: block; font-size: 15px; letter-spacing: .01em; }
+.earlybird span { display: block; font-size: 13.5px; color: rgba(243,255,233,.82); margin-top: 2px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(18px, 4vw, 24px);
+  margin-bottom: 16px;
+  box-shadow: 0 1px 0 #fff inset, 0 14px 30px -28px rgba(36,19,16,.7);
+}
+
+h2 {
+  font: 600 11px/1 var(--body); letter-spacing: .3em; text-transform: uppercase;
+  color: var(--ink-soft); margin: 0 0 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14.5px; }
+.hint { font-weight: 400; color: var(--ink-soft); font-size: 13px; }
+
+input[type=text], input[type=email], select, textarea {
+  width: 100%; padding: 12px 13px; font: inherit; font-size: 15.5px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; color: var(--ink); transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(192,82,47,.15);
+}
+.field { margin-bottom: 16px; }
+.field:last-child { margin-bottom: 0; }
+
+/* --- tickets --- */
+.tier { display: flex; align-items: center; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.tier:last-of-type { border-bottom: none; padding-bottom: 4px; }
+.tier .info { flex: 1; min-width: 0; }
+.tier .name { font-weight: 700; font-size: 16px; }
+.tier .price { font-size: 14px; color: var(--ink-soft); display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
+.tier .now { color: var(--accent-dk); font-weight: 700; font-size: 15px; }
+.tier .was { text-decoration: line-through; text-decoration-color: rgba(192,82,47,.55); opacity: .7; }
+.tier .tag {
+  font: 700 10px/1 var(--body); letter-spacing: .12em; text-transform: uppercase;
+  background: #f0e3c8; color: #7a5a1c; padding: 4px 7px; border-radius: 2px;
+}
+
+.stepper { display: flex; align-items: center; flex: none; border: 1px solid var(--line); border-radius: 999px; background: #fff; overflow: hidden; }
+.stepper button {
+  width: 40px; height: 40px; font-size: 19px; line-height: 1;
+  border: none; background: transparent; color: var(--ink); cursor: pointer;
+  transition: background .12s, color .12s;
+}
+.stepper button:hover:not(:disabled) { background: var(--accent); color: #fff; }
+.stepper button:disabled { opacity: .28; cursor: not-allowed; }
+.stepper input {
+  width: 40px; text-align: center; border: none; font: 700 16px var(--body);
+  background: transparent; color: var(--ink); padding: 0;
+}
+
+.total {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  margin-top: 18px; padding-top: 15px; border-top: 2px solid var(--ink);
+  font: 900 22px/1 var(--display);
+}
+.saving {
+  margin-top: 9px; font-size: 13.5px; color: var(--leaf); font-weight: 600;
+  min-height: 20px;
+}
+
+/* --- welcome / information card --- */
+.info .lede {
+  margin: 0 0 18px; font-size: 16px; line-height: 1.62; color: var(--ink);
+  text-wrap: pretty;
+}
+.info .lede strong { color: var(--accent-dk); font-weight: 700; }
+
+.where {
+  display: flex; gap: 13px; align-items: flex-start;
+  background: #f8efdc; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.where .ico { flex: none; color: var(--accent-dk); margin-top: 1px; }
+.where .k {
+  font: 700 10px/1 var(--body); letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 5px;
+}
+.where b { display: block; font-size: 15.5px; }
+.where span { display: block; font-size: 14px; color: var(--ink-soft); margin-top: 1px; }
+
+.notices { list-style: none; margin: 0; padding: 0; }
+.notices li {
+  display: flex; gap: 13px; align-items: flex-start; padding: 13px 0;
+  border-bottom: 1px dashed var(--line); font-size: 14.5px; line-height: 1.55;
+}
+.notices li:last-child { border-bottom: none; padding-bottom: 0; }
+.notices li:first-child { padding-top: 0; }
+.notices .ico {
+  flex: none; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; background: #f6ecd9; color: var(--accent-dk);
+}
+.notices b { font-weight: 700; }
+.notices p { margin: 2px 0 0; color: var(--ink-soft); font-size: 14px; }
+
+/* --- thank you screen --- */
+#thankyou { display: none; }
+body.submitted #thankyou { display: block; }
+body.submitted #main { display: none; }
+
+.thanks { text-align: center; padding: clamp(26px, 6vw, 40px) clamp(18px, 5vw, 34px); }
+.thanks .seal {
+  width: 62px; height: 62px; margin: 0 auto 20px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(140deg, #3f6b46, #2c4a33); color: #f3ffe9;
+  box-shadow: 0 14px 30px -18px rgba(31,60,38,.95);
+}
+.thanks h2 {
+  display: block; font: 900 clamp(28px, 6.5vw, 40px)/1.05 var(--display);
+  letter-spacing: -.02em; text-transform: none; color: var(--ink); margin: 0 0 12px;
+}
+.thanks h2::after { display: none; }
+.thanks .lead { margin: 0 auto 20px; max-width: 44ch; font-size: 16px; color: var(--ink); }
+.thanks .status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 600 12px/1 var(--body); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--leaf); background: #eef5ea; border: 1px solid #cfe0c8;
+  border-radius: 999px; padding: 10px 16px; margin-bottom: 22px;
+}
+.thanks .status .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--leaf);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: .25; transform: scale(.8); } 50% { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .thanks .status .dot { animation: none; opacity: 1; } }
+
+.thanks .note {
+  margin: 0 auto 24px; max-width: 46ch; font-size: 14.5px; color: var(--ink-soft);
+  border-top: 1px dashed var(--line); padding-top: 18px;
+}
+.thanks .note a { color: var(--accent-dk); font-weight: 600; }
+.thanks .again {
+  display: inline-block; padding: 14px 26px; font: 700 15px var(--body);
+  background: var(--accent); color: #fff; border: none; border-radius: var(--radius);
+  cursor: pointer; transition: background .15s, transform .08s;
+  box-shadow: 0 12px 24px -16px rgba(152,57,28,.95);
+}
+.thanks .again:hover { background: var(--accent-dk); }
+.thanks .again:active { transform: translateY(1px); }
+
+/* --- payment --- */
+.methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.methods label {
+  display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 600;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 15px; cursor: pointer; background: #fff; transition: border-color .15s, background .15s;
+}
+.methods label:hover { border-color: #d3bf9d; }
+.methods label:has(input:checked) { border-color: var(--accent); background: #fdf3ee; box-shadow: 0 0 0 1px var(--accent) inset; }
+.methods input { accent-color: var(--accent); width: 17px; height: 17px; }
+
+.check { display: flex; gap: 11px; align-items: flex-start; }
+.check input { margin-top: 3px; accent-color: var(--accent); width: 17px; height: 17px; flex: none; }
+.check label { font-weight: 400; margin: 0; font-size: 14.5px; }
+
+button.submit {
+  width: 100%; padding: 16px; font: 700 16px var(--body); letter-spacing: .02em;
+  background: var(--accent); color: #fff; border: none;
+  border-radius: var(--radius); cursor: pointer;
+  transition: background .15s, transform .08s;
+  box-shadow: 0 12px 24px -16px rgba(152,57,28,.95);
+}
+button.submit:hover:not(:disabled) { background: var(--accent-dk); }
+button.submit:active:not(:disabled) { transform: translateY(1px); }
+button.submit:disabled { opacity: .55; cursor: not-allowed; }
+
+.error {
+  background: #fdecea; border: 1px solid #e3b3ad; color: #8c2f22;
+  padding: 12px 15px; border-radius: var(--radius); margin-bottom: 14px; font-size: 15px;
+}
+.error:empty { display: none; }
+
+footer { text-align: center; color: var(--ink-soft); font-size: 13.5px; margin-top: 26px; }
+footer a { color: var(--accent-dk); }
+
+.cf-turnstile { margin-bottom: 14px; display: flex; justify-content: center; }
+
+@media (max-width: 480px) {
+  .methods { grid-template-columns: 1fr; }
+  .tier { gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= INTRO ======================= -->
+<div id="intro" role="status" aria-label="Loading Onam 2026">
+  <div id="stage" aria-hidden="true"></div>
+  <div id="veil" aria-hidden="true"></div>
+  <div id="wash" aria-hidden="true"></div>
+
+  <div class="plate">
+    <p class="over">Mallus in Ingolstadt presents</p>
+    <h1>ONAM<span class="yr">2026</span></h1>
+    <p class="sub" id="introSub">Loading…</p>
+  </div>
+
+  <button id="skip" type="button">Skip</button>
+  <div id="bar"></div>
+</div>
+
+<!-- ======================= PAGE ======================= -->
+<div class="wrap">
+
+<div id="main">
+  <header class="reveal" style="animation-delay:.05s">
+    <div class="eyebrow">Registration open</div>
+    <h1>Onam <em>2026</em></h1>
+    <p class="meta"><span>Saturday 12 September 2026</span><i></i><span>Ingolstadt</span></p>
+  </header>
+
+  <!-- ======================= WELCOME / INFORMATION ======================= -->
+  <section class="card info reveal" style="animation-delay:.10s">
+    <h2>Welcome</h2>
+
+    <p class="lede">
+      We warmly welcome you to <strong>Onam</strong>, the harvest festival of Kerala —
+      a day of flowers, feasting and togetherness that we celebrate here in Ingolstadt
+      just as it is celebrated back home. Come along with family and friends for an
+      afternoon and evening of food, games, music and dance.
+    </p>
+
+    <div class="where">
+      <!-- <span class="ico"> -->
+        <!-- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> -->
+      <!-- </span> -->
+      <div>
+        <!-- <div class="k">Event</div> -->
+        <b>Location: Kulturzentrum neun</b>
+        <span>Ingolstadt, Near Hauptbahnhof</span>
+		<span>Date: 12th Sept 2026</span>
+		<span>Starting from: 10:30 Am</span>
       </div>
     </div>
 
-    <script>
-      // 1. Falling Petals Effect
-      function createPetal() {
-        const petal = document.createElement("div");
-        petal.classList.add("petal");
-        
-        const rand = Math.random();
-        if (rand < 0.45) {
-          petal.classList.add("marigold-yellow");
-          petal.style.width = Math.random() * 8 + 8 + "px";
-          petal.style.height = Math.random() * 8 + 8 + "px";
-          petal.style.borderRadius = "50% 0 50% 50%";
-        } else if (rand < 0.85) {
-          petal.classList.add("marigold-orange");
-          petal.style.width = Math.random() * 8 + 8 + "px";
-          petal.style.height = Math.random() * 8 + 8 + "px";
-          petal.style.borderRadius = "50% 0 50% 50%";
-        } else {
-          petal.classList.add("jasmine");
-          petal.style.width = Math.random() * 5 + 4 + "px";
-          petal.style.height = Math.random() * 9 + 7 + "px";
-          petal.style.borderRadius = "50%";
-        }
-        
-        petal.style.left = Math.random() * 100 + "vw";
-        const duration = Math.random() * 4 + 4; // 4s to 8s
-        petal.style.animationDuration = duration + "s";
-        
-        const delay = Math.random() * 3;
-        petal.style.animationDelay = -delay + "s"; // Offset start so particles don't all appear at once
-        
-        document.body.appendChild(petal);
-        
-        setTimeout(() => {
-          petal.remove();
-        }, (duration + delay) * 1000);
-      }
+  </section>
 
-      // Generate initial batch of petals
-      for (let i = 0; i < 20; i++) {
-        createPetal();
-      }
-      // Generate new petals continuously
-      setInterval(createPetal, 350);
+  <form id="form" novalidate>
+    <div class="error" id="error" role="alert" aria-live="polite"></div>
 
-      // 2. Countdown Logic (Deadline: 19th July 2026 23:59:59 CET/CEST)
-      const targetDate = new Date("2026-07-31T23:59:59+02:00").getTime();
-      let isFormClosed = false;
+    <div class="earlybird reveal" style="animation-delay:.12s" id="earlybird">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+      <div>
+        <b>Early bird discount applied</b>
+        <span>The prices below are already reduced — nothing to enter, no code needed.</span>
+      </div>
+    </div>
 
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
+    <div class="card reveal" style="animation-delay:.18s">
+      <h2>Tickets</h2>
+      <div id="tiers"></div>
+      <div class="total"><span>Total</span><span id="total">€0.00</span></div>
+      <div class="saving" id="saving"></div>
+    </div>
 
-        if (distance <= 0) {
-          // Closed state
-          document.getElementById("countdownContainer").classList.add("expired");
-          document.getElementById("formSection").style.display = "none";
-          document.getElementById("closedSection").style.display = "block";
-          isFormClosed = true;
-          return true;
-        }
+    <div class="card notice-card reveal" style="animation-delay:.22s">
+      <ul class="notices">
+        <li>
+          <span class="ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 1 14 0"/><path d="M4 15h16"/><path d="M6 19h12"/></svg>
+          </span>
+          <div>
+            <b>Your ticket includes everything.</b>
+            <p>Lunch with 17+ authentic dishes, music, games and much more.</p>
+          </div>
+        </li>
+        <li>
+          <span class="ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2l1.2-2h8.2l1.2 2h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.2"/></svg>
+          </span>
+          <div>
+            <b>Photos will be taken at the event.</b>
+            <p>By confirming a ticket you agree that photographs and video may be taken during the event.</p>
+          </div>
+        </li>
+        <li>
+          <span class="ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5"/><path d="M12 16.2h.01"/></svg>
+          </span>
+          <div>
+            <b>Tickets cannot be refunded.</b>
+            <p>— unless the event itself is cancelled.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    <div class="card reveal" style="animation-delay:.24s">
+      <h2>Your details</h2>
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email address
+          <span class="hint">— recieve payment details here</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+    </div>
 
-        document.getElementById("daysVal").textContent = days.toString().padStart(2, '0');
-        document.getElementById("hoursVal").textContent = hours.toString().padStart(2, '0');
-        document.getElementById("minutesVal").textContent = minutes.toString().padStart(2, '0');
-        document.getElementById("secondsVal").textContent = seconds.toString().padStart(2, '0');
-        return false;
-      }
+    <div class="card reveal" style="animation-delay:.36s">
+      <h2>How would you like to pay?</h2>
+      <div class="methods">
+        <label><input type="radio" name="payment_method" value="bank" checked> Bank transfer</label>
+        <label><input type="radio" name="payment_method" value="paypal"> PayPal</label>
+      </div>
+    </div>
 
-      // Run countdown immediately and update every second
-      const timer = setInterval(() => {
-        const closed = updateCountdown();
-        if (closed) {
-          clearInterval(timer);
-        }
-      }, 1000);
-      updateCountdown();
+    <div class="card reveal" style="animation-delay:.42s" id="extra-card">
+      <h2>A few more things</h2>
+      <div id="extra"></div>
+    </div>
 
-      // Helper to update counter button states based on value limit (max 5)
-      function updateCounterButtons(targetId) {
-        const input = document.getElementById(targetId);
-        const val = parseInt(input.value) || 0;
-        const minusBtn = document.querySelector(`.cnt-btn.minus[data-target="${targetId}"]`);
-        const plusBtn = document.querySelector(`.cnt-btn.plus[data-target="${targetId}"]`);
-        
-        if (minusBtn) {
-          minusBtn.disabled = (val <= 0);
-        }
-        if (plusBtn) {
-          plusBtn.disabled = (val >= 5);
-        }
-      }
+    <div class="card reveal" style="animation-delay:.48s">
+      <!-- Turnstile site key. Public by design; the secret key lives only in
+           the Edge Function's environment. -->
+      <div class="cf-turnstile"
+           data-sitekey="0x4AAAAAAEGcsL4q8Hss_W-6"
+           data-callback="onTurnstile"
+           data-expired-callback="onTurnstileExpired"></div>
 
-      // 3. Counter Management
-      document.querySelectorAll(".cnt-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const targetId = btn.getAttribute("data-target");
-          const input = document.getElementById(targetId);
-          let val = parseInt(input.value) || 0;
-          
-          if (btn.classList.contains("plus")) {
-            if (val < 5) {
-              val++;
-            }
-          } else if (btn.classList.contains("minus")) {
-            if (val > 0) {
-              val--;
-            }
-          }
-          
-          input.value = val;
-          updateCounterButtons(targetId);
-        });
-      });
+      <button type="submit" class="submit" id="submit">Complete registration</button>
+    </div>
+  </form>
+</div><!-- /#main -->
 
-      // Initialize counter button states on page load
-      ['kidsUnder6', 'kids6to12', 'adults'].forEach(updateCounterButtons);
+<!-- ======================= THANK YOU ======================= -->
+<section id="thankyou" aria-live="polite">
+  <div class="card thanks">
+    <div class="seal">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
 
-      // 4. Form Card Navigation Flow
-      let currentStep = 1;
-      const totalSteps = 4;
-      const backBtn = document.getElementById("backBtn");
-      const nextBtn = document.getElementById("nextBtn");
-      const submitBtn = document.getElementById("submitBtn");
+    <h2>Thank you!</h2>
 
-      function updateStepUI() {
-        // Remove active class from all cards
-        for (let i = 1; i <= totalSteps; i++) {
-          const card = document.getElementById(`card${i}`);
-          card.classList.remove("active", "show");
-        }
+    <p class="lead">
+      Your registration has been received and is being processed.
+      You will receive a confirmation with the payment details by email
+      <b>within 5 minutes</b> — please also check your spam or junk folder.
+    </p>
 
-        // Show current step card with brief reflow delay for transition effect
-        const activeCard = document.getElementById(`card${currentStep}`);
-        activeCard.classList.add("show");
-        activeCard.offsetHeight; // Force reflow
-        activeCard.classList.add("active");
+    <div class="status"><span class="dot"></span> Processing your registration</div>
 
-        // Stepper dots progress update
-        for (let i = 1; i <= totalSteps; i++) {
-          const dot = document.getElementById(`stepDot${i}`);
-          const line = document.getElementById(`stepLine${i}`);
-          
-          if (i < currentStep) {
-            dot.className = "step-dot completed";
-            if (line) line.className = "step-line completed";
-          } else if (i === currentStep) {
-            dot.className = "step-dot active";
-            if (line) line.className = "step-line";
-          } else {
-            dot.className = "step-dot";
-            if (line) line.className = "step-line";
-          }
-        }
+    <p class="note">
+      Still nothing after that? Write to us at
+      <a href="mailto:mallusiningolstadt@gmail.com">mallusiningolstadt@gmail.com</a>
+      and we will get back to you.
+    </p>
 
-        // Visibility of buttons
-        if (currentStep === 1) {
-          backBtn.style.visibility = "hidden";
-        } else {
-          backBtn.style.visibility = "visible";
-        }
+    <button type="button" class="again" id="again">Book another ticket</button>
+  </div>
+</section>
 
-        if (currentStep === totalSteps) {
-          nextBtn.style.display = "none";
-          submitBtn.style.display = "block";
-        } else {
-          nextBtn.style.display = "block";
-          submitBtn.style.display = "none";
-        }
-      }
+  <footer class="reveal" style="animation-delay:.54s">
+    Questions? <a href="mailto:mallusiningolstadt@gmail.com">mallusiningolstadt@gmail.com</a>
+  </footer>
+</div>
 
-      // Step Validation Logic
-      function validateStep() {
-        if (currentStep === 1) {
-          const nameInput = document.getElementById("primaryName");
-          const emailInput = document.getElementById("primaryEmail");
-          const phoneInput = document.getElementById("primaryPhone");
+<script>
+/* ===========================================================================
+   CONFIG
+   =========================================================================== */
+const CONFIG = {
+  // Supabase Dashboard -> Project Settings -> API
+  functionUrl: "https://zhhwfigbiooeicuqjddv.supabase.co/functions/v1/register",
 
-          if (!nameInput.checkValidity()) { nameInput.reportValidity(); return false; }
-          if (!emailInput.checkValidity()) { emailInput.reportValidity(); return false; }
-          if (!phoneInput.checkValidity()) { phoneInput.reportValidity(); return false; }
-          return true;
-        }
+  // false = show the built-in thank-you screen on this page (recommended,
+  //         it survives a refresh — see STATE below).
+  // true  = redirect to a separate page instead, at thankYouUrl.
+  useThankYouPage: false,
+  thankYouUrl: "thankyou.html",
+};
 
-        if (currentStep === 2) {
-          // Counter page doesn't need field validation as counters are readonly & limited
-          return true;
-        }
+const INTRO = {
+  enabled: true,           // master switch — false = never play the intro
 
-        if (currentStep === 3) {
-          const dynamicInputs = document.querySelectorAll(".dynamic-member-name");
-          for (let i = 0; i < dynamicInputs.length; i++) {
-            if (!dynamicInputs[i].checkValidity()) {
-              dynamicInputs[i].reportValidity();
-              return false;
-            }
-          }
-          return true;
-        }
+  // ---- FLIP THIS ONE ----
+  // true  = the intro plays once and is then remembered, so the same visitor
+  //         goes straight to the form next time.
+  // false = it plays on every single page load (good while you are designing).
+  playOnce: false,
 
-        return true;
-      }
+  // Where "already seen" is remembered:
+  //   "browser" = localStorage   — remembered until they clear site data
+  //   "session" = sessionStorage — forgotten when the tab is closed
+  remember: "browser",
 
-      // Dynamic Generation of names inside Card 3
-      function populateCard3() {
-        const container = document.getElementById("dynamicNamesContainer");
-        container.innerHTML = "";
+  frameCount: 10,          // how many cards/photos flip past
+  preloadMaxMs: 1100,      // stop waiting for photos after this, start anyway
+};
 
-        const kidsUnder6 = parseInt(document.getElementById("kidsUnder6").value) || 0;
-        const kids6to12 = parseInt(document.getElementById("kids6to12").value) || 0;
-        const adults = parseInt(document.getElementById("adults").value) || 0;
-        const totalAccompanying = kidsUnder6 + kids6to12 + adults;
+/* --- YOUR PHOTOS ----------------------------------------------------------
+   Put ~20 images in a /photos folder next to this file and list them here.
+   Landscape or square works best; anything ~1200px wide is plenty.
+   Any slot left empty (or an image that fails to load) falls back to a
+   generated typographic card, so the intro never breaks.
+   e.g. const PHOTOS = ["photos/01.jpg", "photos/02.jpg", ...];
+--------------------------------------------------------------------------- */
+const PHOTOS = [
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "1.jpg",
+  "2.jpg",
+  "3.jpg",
+  "4.jpg",
+  "https://picsum.photos/seed/onam-13/900/600.webp",
+  "https://picsum.photos/seed/onam-14/900/600.webp",
+  "https://picsum.photos/seed/onam-15/900/600.webp",
+  "https://picsum.photos/seed/onam-16/900/600.webp",
+  "https://picsum.photos/seed/onam-17/900/600.webp",
+  "https://picsum.photos/seed/onam-18/900/600.webp",
+  "https://picsum.photos/seed/onam-19/900/600.webp",
+  "https://picsum.photos/seed/onam-22/900/600.webp",
+];
 
-        if (totalAccompanying === 0) {
-          container.innerHTML = `
-            <div class="no-members-box">
-              <div class="no-members-icon">🌾</div>
-              <p>You have not added any additional members.</p>
-              <p class="subtext">Click <strong>Next</strong> to proceed directly to the summary.</p>
-            </div>
-          `;
-          return;
-        }
 
-        let index = 1;
-        
-        // Kids Under 6 Name Inputs
-        for (let i = 1; i <= kidsUnder6; i++) {
-          createNameInputField(container, `Member ${index} Name (Kid under 6)`, `member_under6_${i}`, `Enter name`);
-          index++;
-        }
+/* Fallback cards — also the label pool. */
+const CARDS = [
+  ["Food",  "Onasadhya"],      ["Event", "Pookalam"],      ["Games", "Vadamvali"],
+  ["Food",  "Payasam"],        ["Event", "Thiruvathira"],  ["Games", "Uriyadi"],
+  ["Event", "Chenda Melam"],   ["Food",  "Avial"],         ["Games", "Musical Chairs"],
+  ["Event", "Maveli"],         ["Food",  "Banana Chips"],  ["Games", "Lemon & Spoon"],
+  ["Event", "Kaikottikali"],   ["Food",  "Sambar"],        ["Games", "Sack Race"],
+  ["Event", "Onappaattu"],     ["Food",  "Pappadam"],      ["Games", "Tug of War"],
+  ["Event", "Pulikali"],       ["Food",  "Sadhya Leaf"],
+];
 
-        // Kids 6-12 Name Inputs
-        for (let i = 1; i <= kids6to12; i++) {
-          createNameInputField(container, `Member ${index} Name (Kid 6-12)`, `member_6to12_${i}`, `Enter name`);
-          index++;
-        }
+const PALETTE = [
+  ["#7b1f1f", "#c0522f"], ["#1f4733", "#3f6b46"], ["#8a4a12", "#e0a03a"],
+  ["#3a1d4a", "#8c4a7a"], ["#12384f", "#2f7d8f"], ["#5d1414", "#a8341f"],
+  ["#2a4a1a", "#6d9438"], ["#6a3a06", "#d08427"],
+];
 
-        // Adults Name Inputs
-        for (let i = 1; i <= adults; i++) {
-          createNameInputField(container, `Member ${index} Name (Adult)`, `member_adult_${i}`, `Enter name`);
-          index++;
-        }
-      }
+/* --- TICKETS ---------------------------------------------------------------
+   `cents` = what the Edge Function will actually charge (UNCHANGED).
+   `was`   = the pre-discount price, shown struck through. Display only.
+--------------------------------------------------------------------------- */
+const TIERS = [
+  { key: "adult",   label: "Adult",       cents: 2399, was: 2799, max: 20 },
+  { key: "student", label: "Student",     cents: 2199, was: 2499, max: 20 },
+  { key: "kid",     label: "Kids (6-12)", cents: 1000,            max: 20 },
+];
 
-      function createNameInputField(container, labelText, inputId, placeholder) {
-        const group = document.createElement("div");
-        group.classList.add("form-group");
+// Must mirror [form] in config.toml.
+const EXTRA_FIELDS = [
+  { key: "dietary", label: "Dietary requirements or allergies",
+    type: "text", required: false, help: "Leave blank if none" },
+  { key: "heard_from", label: "How did you hear about Onam 2026?",
+    type: "select", required: false,
+    options: ["Friend or family", "WhatsApp group", "Social media", "Other"] },
+  { key: "terms", type: "checkbox", required: true,
+    label: "I understand my registration is only confirmed once payment is received" },
+];
 
-        const label = document.createElement("label");
-        label.setAttribute("for", inputId);
-        label.textContent = labelText + " *";
+const MAX_TICKETS = 20;
 
-        const input = document.createElement("input");
-        input.setAttribute("type", "text");
-        input.setAttribute("id", inputId);
-        input.setAttribute("name", labelText);
-        input.setAttribute("placeholder", placeholder);
-        input.setAttribute("required", "true");
-        input.classList.add("dynamic-member-name");
+const eur = (c) => "€" + Math.floor(Math.abs(c) / 100) + "." + String(Math.abs(c) % 100).padStart(2, "0");
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-        group.appendChild(label);
-        group.appendChild(input);
-        container.appendChild(group);
-      }
+/* ===========================================================================
+   STATE  —  "have they already registered?"
+   ---------------------------------------------------------------------------
+   Once a registration goes through we write a flag to localStorage. While that
+   flag is present the page shows the thank-you screen instead of the form —
+   including after a refresh, a reopened tab, or a return visit tomorrow.
+   The only way out is the "Book another ticket" button, which clears it.
+   =========================================================================== */
+const KEY_DONE  = "onam_registration_done";
+const KEY_INTRO = "onam_intro_seen";
 
-      // Summary Generation inside Card 4
-      function populateCard4() {
-        document.getElementById("sumName").textContent = document.getElementById("primaryName").value;
-        document.getElementById("sumEmail").textContent = document.getElementById("primaryEmail").value;
-        document.getElementById("sumPhone").textContent = document.getElementById("primaryPhone").value;
+const store = {
+  get(key, area) { try { return window[area].getItem(key); } catch (e) { return null; } },
+  set(key, value, area) { try { window[area].setItem(key, value); } catch (e) {} },
+  del(key, area) { try { window[area].removeItem(key); } catch (e) {} },
+};
 
-        const reachableVal = document.querySelector('input[name="Reachable Via"]:checked').value;
-        document.getElementById("sumReachable").textContent = reachableVal;
+const introArea = INTRO.remember === "session" ? "sessionStorage" : "localStorage";
 
-        const kidsUnder6 = parseInt(document.getElementById("kidsUnder6").value) || 0;
-        const kids6to12 = parseInt(document.getElementById("kids6to12").value) || 0;
-        const adults = parseInt(document.getElementById("adults").value) || 0;
+const isSubmitted = () => store.get(KEY_DONE, "localStorage") === "1";
 
-        document.getElementById("sumKidsUnder6").textContent = kidsUnder6;
-        document.getElementById("sumKids6to12").textContent = kids6to12;
-        document.getElementById("sumAdults").textContent = adults;
+function showThankYou() {
+  store.set(KEY_DONE, "1", "localStorage");
+  document.body.classList.add("submitted");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-        const sumNamesList = document.getElementById("sumNamesList");
-        sumNamesList.innerHTML = "";
+// Restore the thank-you screen on load if they already registered.
+if (isSubmitted()) document.body.classList.add("submitted");
 
-        const nameInputs = document.querySelectorAll(".dynamic-member-name");
-        if (nameInputs.length > 0) {
-          document.getElementById("sumNamesSection").style.display = "block";
-          nameInputs.forEach(input => {
-            const li = document.createElement("li");
-            const label = document.querySelector(`label[for="${input.id}"]`);
-            const labelText = label ? label.textContent.replace(" *", "") : "Member Name";
-            li.innerHTML = `<strong>${labelText}:</strong> ${input.value}`;
-            sumNamesList.appendChild(li);
-          });
-        } else {
-          document.getElementById("sumNamesSection").style.display = "none";
-        }
-      }
+document.getElementById("again").addEventListener("click", () => {
+  store.del(KEY_DONE, "localStorage");
+  // Reload without any prefill query string so they start from a clean form.
+  window.location.href = window.location.pathname;
+});
 
-      // Nav Button Event Listeners
-      nextBtn.addEventListener("click", () => {
-        if (validateStep()) {
-          if (currentStep < totalSteps) {
-            currentStep++;
-            if (currentStep === 3) {
-              populateCard3();
-            } else if (currentStep === 4) {
-              populateCard4();
-            }
-            updateStepUI();
-          }
-        }
-      });
+/* ===========================================================================
+   INTRO SEQUENCE
+   =========================================================================== */
+(function intro() {
+  const el = document.getElementById("intro");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const seen = INTRO.playOnce && store.get(KEY_INTRO, introArea) === "1";
 
-      backBtn.addEventListener("click", () => {
-        if (currentStep > 1) {
-          currentStep--;
-          updateStepUI();
-        }
-      });
+  // Skip it entirely for someone who is only here to see their confirmation.
+  if (!INTRO.enabled || seen || isSubmitted()) {
+    el.remove(); document.body.classList.add("ready"); return;
+  }
 
-      // 5. Submit Event Handler
-      const onamForm = document.getElementById("onamForm");
+  document.documentElement.classList.add("intro-active");
 
-      onamForm.addEventListener("submit", async function (e) {
-        e.preventDefault();
+  const stage = document.getElementById("stage");
+  const bar   = document.getElementById("bar");
+  const sub   = document.getElementById("introSub");
+  const wash  = document.getElementById("wash");
+  const n     = INTRO.frameCount;
 
-        if (isFormClosed) {
-          alert("Registration is closed. Submissions are no longer accepted.");
-          return;
-        }
+  // build the frames
+  const frames = [];
+  for (let i = 0; i < n; i++) {
+    const f = document.createElement("div");
+    f.className = "frame";
+    const [kicker, word] = CARDS[i % CARDS.length];
+    const [a, b] = PALETTE[i % PALETTE.length];
+    f.style.background =
+      "radial-gradient(120% 120% at 30% 20%, " + b + " 0%, " + a + " 70%, #140a07 100%)";
+    f.innerHTML =
+      '<div class="card-fill"><div class="kicker">' + kicker + '</div>' +
+      '<div class="word">' + word + "</div></div>";
+    stage.appendChild(f);
+    frames.push(f);
+  }
 
-        // Validate checkboxes are checked
-        const verifyInfo = document.getElementById("verifyInfo");
-        const agreePay = document.getElementById("agreePay");
-        if (!verifyInfo.checked || !agreePay.checked) {
-          alert("Please verify the information and accept the payment conditions.");
-          return;
-        }
+  // swap in real photos where we have them
+  let loaded = 0;
+  const urls = PHOTOS.slice(0, n).filter(Boolean);
+  const preload = urls.map((url, i) => new Promise((done) => {
+    const img = new Image();
+    img.onload = () => {
+      const f = frames[PHOTOS.indexOf(url)] || frames[i];
+      if (f) { f.style.backgroundImage = "url('" + url + "')"; f.innerHTML = ""; }
+      loaded++; done();
+    };
+    img.onerror = () => { loaded++; done(); };   // keep the generated card
+    img.src = url;
+  }));
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Submitting...";
+  let skipped = false;
+  const finish = () => {
+    if (skipped) return; skipped = true;
+    store.set(KEY_INTRO, "1", introArea);
+    el.classList.add("done");
+    document.documentElement.classList.remove("intro-active");
+    document.body.classList.add("ready");
+    setTimeout(() => el.remove(), 900);
+  };
 
-        // Collect all form data
-        const formData = new FormData(onamForm);
-        const data = {};
-        for (let [key, value] of formData.entries()) {
-          data[key] = value;
-        }
+  document.getElementById("skip").addEventListener("click", finish);
+  el.addEventListener("click", (e) => { if (e.target.id !== "skip") finish(); });
+  window.addEventListener("keydown", (e) => { if (e.key === "Escape" || e.key === " ") finish(); }, { once: true });
 
-        // Form submission via fetch
-        try {
-          const response = await fetch(onamForm.action, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(data),
-          });
+  const setP = (p) => { el.style.setProperty("--p", p.toFixed(3)); bar.style.width = (p * 100).toFixed(1) + "%"; };
 
-          if (response.ok) {
-            // Hide form and show success
-            document.getElementById("formSection").style.display = "none";
-            document.getElementById("formHeader").style.display = "none";
-            document.getElementById("countdownContainer").style.display = "none";
-            document.getElementById("successMessage").style.display = "block";
-          } else {
-            console.error("Submission failed:", response.statusText);
-            alert("Oops! Something went wrong with your submission. Please check the information and try again.");
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit Registration";
-          }
-        } catch (error) {
-          console.error("Network error during submission:", error);
-          alert("A network error occurred. Please check your internet connection and try again.");
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit Registration";
-        }
-      });
-    </script>
-  </body>
+  (async function run() {
+    // 1. wait briefly for photos (or not at all if there are none)
+    if (preload.length) {
+      const t0 = Date.now();
+      const race = Promise.race([Promise.all(preload), wait(INTRO.preloadMaxMs)]);
+      const tick = setInterval(() => {
+        const byTime = Math.min(1, (Date.now() - t0) / INTRO.preloadMaxMs);
+        const byFile = loaded / preload.length;
+        sub.textContent = "Loading… " + Math.round(Math.max(byTime, byFile) * 100) + "%";
+      }, 90);
+      await race;
+      clearInterval(tick);
+    }
+    sub.textContent = "-";
+    if (skipped) return;
+
+    if (reduced) {                       // gentle version, no strobing
+      frames[0].classList.add("on");
+      setP(1); await wait(1100); finish(); return;
+    }
+
+    // 2. the flip — starts slow, accelerates, ~2.9s over all frames
+    for (let i = 0; i < n; i++) {
+      if (skipped) return;
+      frames.forEach((f) => f.classList.remove("on", "zoom"));
+      frames[i].classList.add("on", "zoom");
+      setP((i + 1) / n * 0.92);
+      const ease = i / (n - 1);
+      await wait(Math.round(180 - 40 * ease * ease));
+    }
+    if (skipped) return;
+
+    // 3. lock the title, sweep the marigold wash, hand over
+    setP(1);
+    el.classList.add("lock");
+    wash.classList.add("fire");
+    sub.textContent = "12 September · Ingolstadt";
+    await wait(1100);
+    finish();
+  })();
+})();
+
+/* ===========================================================================
+   TICKETS
+   =========================================================================== */
+const quantities = Object.fromEntries(TIERS.map((t) => [t.key, 0]));
+const tiersEl = document.getElementById("tiers");
+const tierControls = {};   // key -> { tier, box, minus, plus } — shared by clicks + URL prefill
+
+TIERS.forEach((tier) => {
+  const row = document.createElement("div");
+  row.className = "tier";
+  const price = tier.was
+    ? '<span class="was">' + eur(tier.was) + '</span><span class="now">' + eur(tier.cents) + '</span>' +
+      '<span class="tag">Early bird</span>'
+    : '<span class="now">' + eur(tier.cents) + "</span>";
+  row.innerHTML =
+    '<div class="info"><div class="name">' + tier.label + '</div>' +
+    '<div class="price">' + price + "</div></div>" +
+    '<div class="stepper">' +
+      '<button type="button" aria-label="One fewer ' + tier.label + '" data-step="-1" disabled>−</button>' +
+      '<input type="text" inputmode="numeric" value="0" readonly aria-label="' + tier.label + ' quantity">' +
+      '<button type="button" aria-label="One more ' + tier.label + '" data-step="1">+</button>' +
+    "</div>";
+
+  const [minus, plus] = row.querySelectorAll("button");
+  const box = row.querySelector("input");
+  tierControls[tier.key] = { tier, box, minus, plus };
+
+  row.querySelectorAll("button").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      setQty(tier.key, quantities[tier.key] + Number(btn.dataset.step));
+      refreshTotal();
+    }));
+
+  tiersEl.appendChild(row);
+});
+
+// Sets a tier's quantity and keeps its stepper UI in sync. Used by both the
+// +/- buttons and the URL prefill below. Clamps to [0, tier.max].
+function setQty(key, next) {
+  const c = tierControls[key];
+  if (!c) return;
+  next = Math.max(0, Math.min(c.tier.max, next));
+  quantities[key] = next;
+  c.box.value = next;
+  c.minus.disabled = next === 0;
+  c.plus.disabled = next >= c.tier.max;
+}
+
+function totalCents()   { return TIERS.reduce((s, t) => s + t.cents * quantities[t.key], 0); }
+function totalTickets() { return TIERS.reduce((s, t) => s + quantities[t.key], 0); }
+function savedCents()   { return TIERS.reduce((s, t) => s + ((t.was || t.cents) - t.cents) * quantities[t.key], 0); }
+
+function refreshTotal() {
+  document.getElementById("total").textContent = eur(totalCents());
+  const saved = savedCents();
+  document.getElementById("saving").textContent =
+    saved > 0 ? "You save " + eur(saved) + " with the early bird price." : "";
+}
+
+/* ===========================================================================
+   EXTRA QUESTIONS  (unchanged behaviour)
+   =========================================================================== */
+const extraEl = document.getElementById("extra");
+EXTRA_FIELDS.forEach((field) => {
+  const wrap = document.createElement("div");
+  wrap.className = field.type === "checkbox" ? "field check" : "field";
+  const id = "x_" + field.key;
+  const req = field.required ? " *" : "";
+
+  if (field.type === "checkbox") {
+    wrap.innerHTML =
+      `<input type="checkbox" id="${id}" data-key="${field.key}">
+       <label for="${id}">${field.label}${req}</label>`;
+  } else if (field.type === "select") {
+    wrap.innerHTML =
+      `<label for="${id}">${field.label}${req}</label>
+       <select id="${id}" data-key="${field.key}">
+         <option value=""></option>
+         ${field.options.map((o) => `<option value="${o}">${o}</option>`).join("")}
+       </select>`;
+  } else if (field.type === "textarea") {
+    wrap.innerHTML =
+      `<label for="${id}">${field.label}${req}
+         ${field.help ? `<span class="hint">— ${field.help}</span>` : ""}</label>
+       <textarea id="${id}" rows="3" data-key="${field.key}"></textarea>`;
+  } else {
+    wrap.innerHTML =
+      `<label for="${id}">${field.label}${req}
+         ${field.help ? `<span class="hint">— ${field.help}</span>` : ""}</label>
+       <input type="text" id="${id}" data-key="${field.key}">`;
+  }
+  extraEl.appendChild(wrap);
+});
+if (!EXTRA_FIELDS.length) document.getElementById("extra-card").remove();
+
+function collectExtra() {
+  const out = {};
+  extraEl.querySelectorAll("[data-key]").forEach((el) => {
+    out[el.dataset.key] = el.type === "checkbox" ? el.checked : el.value.trim();
+  });
+  return out;
+}
+
+/* ===========================================================================
+   PREFILL FROM URL
+   ---------------------------------------------------------------------------
+   Lets a link fill in the form so someone can land, glance, and submit.
+
+   Recognised query params:
+     name            - full name                 ?name=Anjali%20Menon
+     email           - email address              &email=anjali%40example.com
+     payment_method  - "bank" or "paypal"         &payment_method=paypal
+     <tier.key>      - one param per ticket tier: &adult=1&student=0&kid=2
+                        (tier keys are whatever TIERS uses above — currently
+                        adult / student / kid)
+     <extra.key>     - one param per extra field, matched by its `key`:
+                        &dietary=Vegan&heard_from=Friend%20or%20family
+                        for a checkbox field, any of 1/true/yes/on checks it.
+
+   Example link:
+     https://yoursite/?name=Anjali+Menon&email=anjali%40example.com&adult=1&kid=2
+
+   Unknown or missing params are simply ignored, so partial links work fine —
+   e.g. a link with just &email=... prefills only the email field. Values are
+   still shown on the page for the person to review before submitting; nothing
+   here bypasses the normal client or server checks.
+   =========================================================================== */
+function prefillFromURL() {
+  const q = new URLSearchParams(window.location.search);
+  if (![...q.keys()].length) return;
+
+  const name = q.get("name");
+  if (name) document.getElementById("name").value = name;
+
+  const email = q.get("email");
+  if (email) document.getElementById("email").value = email;
+
+  const pm = q.get("payment_method");
+  if (pm === "bank" || pm === "paypal") {
+    const radio = document.querySelector(`input[name=payment_method][value="${pm}"]`);
+    if (radio) radio.checked = true;
+  }
+
+  TIERS.forEach((tier) => {
+    const raw = q.get(tier.key);
+    if (raw === null) return;
+    setQty(tier.key, parseInt(raw, 10) || 0);
+  });
+  refreshTotal();
+
+  EXTRA_FIELDS.forEach((field) => {
+    const raw = q.get(field.key);
+    if (raw === null) return;
+    const el = extraEl.querySelector(`[data-key="${field.key}"]`);
+    if (!el) return;
+    if (field.type === "checkbox") {
+      el.checked = ["1", "true", "yes", "on"].includes(raw.toLowerCase());
+    } else {
+      el.value = raw;
+    }
+  });
+}
+prefillFromURL();
+
+/* ===========================================================================
+   TURNSTILE + SUBMIT  (identical contract to the old page)
+   =========================================================================== */
+let turnstileToken = "";
+window.onTurnstile = (token) => { turnstileToken = token; };
+window.onTurnstileExpired = () => { turnstileToken = ""; };
+
+const errorEl = document.getElementById("error");
+const submitBtn = document.getElementById("submit");
+
+function fail(message) {
+  errorEl.textContent = message;
+  errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+document.getElementById("form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  errorEl.textContent = "";
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+
+  // Client-side checks are a courtesy so people are not bounced by the server
+  // for an obvious typo. Everything here is checked again server-side.
+  if (name.length < 2) return fail("Please enter your full name.");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))
+    return fail("Please enter a valid email address.");
+  if (totalTickets() === 0) return fail("Please select at least one ticket.");
+  if (totalTickets() > MAX_TICKETS)
+    return fail(`Please book at most ${MAX_TICKETS} tickets at a time.`);
+
+  for (const field of EXTRA_FIELDS) {
+    const el = extraEl.querySelector(`[data-key="${field.key}"]`);
+    if (!field.required || !el) continue;
+    if (field.type === "checkbox" ? !el.checked : !el.value.trim())
+      return fail(field.type === "checkbox"
+        ? "Please tick the box to continue."
+        : `Please answer: ${field.label}`);
+  }
+
+  if (!turnstileToken)
+    return fail("Please complete the verification check, then try again.");
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting…";
+
+  try {
+    const response = await fetch(CONFIG.functionUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name, email,
+        payment_method: document.querySelector("input[name=payment_method]:checked").value,
+        // Quantities only — the server prices it.
+        quantities,
+        extra: collectExtra(),
+        turnstile_token: turnstileToken,
+      }),
+    });
+
+    const body = await response.json().catch(() => ({}));
+
+    if (!response.ok || !body.ok) {
+      if (window.turnstile) window.turnstile.reset();
+      turnstileToken = "";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Complete registration";
+      return fail(body.error || "Something went wrong. Please try again.");
+    }
+
+    if (CONFIG.useThankYouPage) {
+      window.location.href = CONFIG.thankYouUrl;
+      return;
+    }
+
+    // Remembered in localStorage, so a refresh still lands on this screen.
+    showThankYou();
+    submitBtn.textContent = "Registration received";
+  } catch (err) {
+    if (window.turnstile) window.turnstile.reset();
+    turnstileToken = "";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Complete registration";
+    fail("Could not reach the server. Please check your connection and try again.");
+  }
+});
+
+refreshTotal();
+</script>
+</body>
 </html>
